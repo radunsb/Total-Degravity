@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour
 {
+    float[] rotDeltas = { 0, 0 };
     float[] rotAngles = { 0, 0 };
     Quaternion currentRot;
     bool invertX;
@@ -27,8 +28,9 @@ public class CameraScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.transform.Rotate(new Vector3(rotAngles[1], rotAngles[0], 0) * lookSensitivity);
-        this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 0);
+        rotAngles[0] += rotDeltas[0] * lookSensitivity;
+        rotAngles[1] += rotDeltas[1] * lookSensitivity;
+        this.transform.rotation = Quaternion.Euler(rotAngles[1], rotAngles[0], 0);
     }
 
     public void OnCamera(InputValue value)
@@ -36,11 +38,11 @@ public class CameraScript : MonoBehaviour
         Vector2 _movement = value.Get<Vector2>();
         if(_movement.x < 0.1f && _movement.y < 0.1f)
         {
-            rotAngles[0] = 0;
-            rotAngles[1] = 0;
+            rotDeltas[0] = 0;
+            rotDeltas[1] = 0;
         }
-        rotAngles[0] = !invertX ? _movement.x : -_movement.x;
-        rotAngles[1] = invertY ? _movement.y : -_movement.y;
+        rotDeltas[0] = !invertX ? _movement.x : -_movement.x;
+        rotDeltas[1] = invertY ? _movement.y : -_movement.y;
     }
 
     public void OnLock(InputValue value)
