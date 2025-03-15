@@ -30,6 +30,7 @@ public class CameraScript : MonoBehaviour
     {
         rotAngles[0] += rotDeltas[0] * lookSensitivity;
         rotAngles[1] += rotDeltas[1] * lookSensitivity;
+        rotAngles[1] = Mathf.Clamp(rotAngles[1], -90f, 90f);
         this.transform.rotation = Quaternion.Euler(rotAngles[1], rotAngles[0], 0);
     }
 
