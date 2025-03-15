@@ -148,5 +148,13 @@ public class SwordScript : MonoBehaviour
             _chargeTime = 0;
             _swingTime = 0;
         }
+        if(otherRB == null && other.gameObject.tag == "Wall")
+        {
+            Vector3 launchForce = swordPower * transform.forward * _chargeTime;
+            _rb.velocity = Vector3.zero;
+            _rb.AddForce(-1 * launchForce);
+            _chargeTime = 0;
+            _swingTime = 0;
+        }
     }
 }
