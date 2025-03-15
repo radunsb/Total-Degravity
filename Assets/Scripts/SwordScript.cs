@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(BoxCollider))]
 public class SwordScript : MonoBehaviour
 {
     public float swordPower;
@@ -127,8 +126,8 @@ public class SwordScript : MonoBehaviour
 
     void moveSword()
     {
-        swordTransform.localPosition = Vector3.Slerp(_destPosition, swordTransform.position, _swordSpeed);
-        swordTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(_destRotation), swordTransform.rotation, _swordSpeed);
+        swordTransform.localPosition = Vector3.Slerp(_destPosition, swordTransform.localPosition, _swordSpeed);
+        swordTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(_destRotation), swordTransform.localRotation, _swordSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
