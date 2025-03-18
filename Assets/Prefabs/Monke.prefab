@@ -73,7 +73,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 531964100981040062}
   - component: {fileID: 5962630481453210181}
   - component: {fileID: 5228030588605384275}
+  - component: {fileID: 3910898149983143151}
   m_Layer: 0
   m_Name: Monke
   m_TagString: Untagged
@@ -281,9 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4666c52178aed2488d5211ab385feb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordPower: 100
+  swordPower: 500
   maxChargeTime: 4
-  swingSpeed: 0.95
+  swingSpeed: 0.93
   recoverSpeed: 0.98
   maxSwingTime: 0.5
   swordTransform: {fileID: 68917418551495430}
@@ -370,7 +371,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9100770291456044855}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 021213eb55f079d4c91f1564425a9909, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -386,6 +387,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3910898149983143151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100770291456044855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed6640844411854d939356541bd29aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 100
+  driftSpeed: 0.5
+  maxRotation: 15
+  driftRotation: 10
+  slowdownRatio: 0.99
 --- !u!1001 &8311881650335566728
 PrefabInstance:
   m_ObjectHideFlags: 0
