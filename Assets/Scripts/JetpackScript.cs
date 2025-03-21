@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class JetpackScript : MonoBehaviour
 {
-    public float thrustForce = 0.0001f;
+    public float thrustForce = 0.001f;
     Rigidbody _rbody;
 
     bool _thrusting = false;
