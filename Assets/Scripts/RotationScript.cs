@@ -7,7 +7,7 @@ public class RotationScript : MonoBehaviour
 {
     float[] rotDeltas = { 0, 0 };
     float[] rotAngles = { 0, 0 };
-    float rotationDeadzone = 3f;
+    float rotationDeadzone = 10f;
 
     Rigidbody _rbody;
 
@@ -24,25 +24,18 @@ public class RotationScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rotAngles[0] += rotDeltas[0] * rotationDeadzone % 360;
-        rotAngles[1] += rotDeltas[1] * rotationDeadzone % 360;
-        this.transform.rotation = Quaternion.Euler(rotAngles[0], 0, rotAngles[1]);
-        _rbody.MoveRotation(Quaternion.Euler(rotAngles[0], 0, rotAngles[1]));
-        this.transform.Rotate(rotAngles[0], 0, rotAngles[1]);
+        rotAngles[0] += rotDeltas[0] * rotationDeadzone * Time.deltaTime;
+        rotAngles[1] += rotDeltas[1] * rotationDeadzone * Time.deltaTime;
+        this.transform.rotation = Quaternion.Euler(rotAngles[1] % 360, 0, rotAngles[0] % 360);
+        //_rbody.MoveRotation(Quaternion.Euler(rotAngles[0] % 360, 0, rotAngles[1] % 360));
+        //this.transform.Rotate(rotAngles[0] % 360, 0, rotAngles[1] % 360);
     }
 
     public void OnRotate(InputValue value)
     {
         Vector2 _movement = value.Get<Vector2>();
-        if (_movement.x < 0.1f && _movement.y < 0.1f)
-        {
-            rotDeltas[0] = 0;
-            rotDeltas[1] = 0;
-        } else
-        {
-            rotDeltas[0] = _movement.x;
-            rotDeltas[1] = _movement.y;
-        }
+        rotDeltas[0] = -_movement.x;
+        rotDeltas[1] = _movement.y;
         print("Detecting rotation attempt");
     }
 }
