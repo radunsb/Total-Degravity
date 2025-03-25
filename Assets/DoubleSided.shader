@@ -6,7 +6,7 @@ Shader "DoubleSided"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.5
-        _Reflection("Reflection Intencity", Range(0.1,10)) = 5.2
+        _Reflection("Reflection Intensity", Range(0.1,10)) = 5.2
         _Saturation("Reflection Saturation", Range(0.6,2.2)) = 1.2
         _DotProduct("Rim effect", Range(-1,1)) = 0.044
         _Fresnel("Fresnel Coefficient", Range(-1,10)) = 5.0
@@ -15,10 +15,11 @@ Shader "DoubleSided"
     SubShader
     {
         Tags { "RenderType"="Transparent" "Queue"="Transparent" "IgnoreProjector" = "True"}
-        ZWrite Off
+        
 
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 200
+        ZWrite Off
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
