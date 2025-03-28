@@ -1,0 +1,46 @@
+{
+    "name": "Monkey",
+    "maps": [
+        {
+            "name": "MouseDefault",
+            "id": "4fb975c2-9f23-4347-973d-22473f43297c",
+            "actions": [
+                {
+                    "name": "Sword",
+                    "type": "Value",
+                    "id": "747add37-d05c-4cfa-9ac3-6ad5122b21f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "72c26b76-85db-49e5-8827-80e19e868af0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Sword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

@@ -132,25 +132,30 @@ public class SwordScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered");
+        //Debug.Log("Trigger entered");
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
 
+        Vector3 launchForce = swordPower * transform.forward * _chargeTime;
+
+        if (other.CompareTag("Reactor"))
+        {
+            other.gameObject.GetComponent<ReactorScript>().takeSwordDamage(launchForce.magnitude);
+        }
+
         if (otherRB != null)
         {
-            Vector3 launchForce = swordPower * transform.forward * _chargeTime;
 
             otherRB.AddForce(launchForce);
             _rb.AddForce(-1 * launchForce);
 
-            Debug.LogFormat("applying force: {0}", launchForce.magnitude);
+            //Debug.LogFormat("applying force: {0}", launchForce.magnitude);
 
             _chargeTime = 0;
             _swingTime = 0;
         }
-        if(otherRB == null && other.gameObject.tag == "Wall")
+        else if(otherRB == null && other.gameObject.tag == "Wall")
         {
-            Vector3 launchForce = swordPower * transform.forward * _chargeTime;
             _rb.velocity = Vector3.zero;
             _rb.AddForce(-1 * launchForce);
             _chargeTime = 0;
