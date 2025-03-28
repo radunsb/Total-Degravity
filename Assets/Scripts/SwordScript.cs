@@ -142,6 +142,9 @@ public class SwordScript : MonoBehaviour
         {
             other.gameObject.GetComponent<ReactorScript>().takeSwordDamage(launchForce.magnitude);
         }
+        else if (other.CompareTag("Shield")){
+            other.gameObject.GetComponent<ShieldScript>().takeSwordDamage(launchForce.magnitude);
+        }
 
         if (otherRB != null)
         {

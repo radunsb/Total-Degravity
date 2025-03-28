@@ -44,6 +44,7 @@ public class ReactorScript : MonoBehaviour
 
         if(_health <= 0) { 
             Destroy(gameObject);
+            //TODO: make the monkey win 
         }
     }
 

@@ -26,7 +26,7 @@ public class ZeroGPhysicsScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.LogFormat("moving at {0}", _rb.velocity);
+        //Debug.LogFormat("moving at {0}", _rb.velocity);
 
         if (_rb.velocity.magnitude > maxSpeed)
         {
@@ -39,14 +39,14 @@ public class ZeroGPhysicsScript : MonoBehaviour
 
         if (_rb.velocity.magnitude <= driftSpeed)
         {
-            Debug.Log("done slowing down");
+            //Debug.Log("done slowing down");
             _slowingV = false;
         }
         else if (_slowingV)
         {
-            Debug.LogFormat("slowing down from {0}", _rb.velocity.magnitude);
+            //Debug.LogFormat("slowing down from {0}", _rb.velocity.magnitude);
             _rb.velocity = slowdownRatio * _rb.velocity;
-            Debug.LogFormat("to {0}", _rb.velocity.magnitude);
+            //Debug.LogFormat("to {0}", _rb.velocity.magnitude);
         }
 
         if (_rb.angularVelocity.magnitude <= driftRotation)
