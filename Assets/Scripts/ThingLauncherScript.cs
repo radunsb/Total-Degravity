@@ -22,6 +22,15 @@ public class ThingLauncherScript : MonoBehaviour
             _lastLaunchTime = Time.time;
             StartCoroutine(launchThing());
         }
+        
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            _lastLaunchTime = Time.time;
+            StartCoroutine(launchThing());
+        }
     }
 
     private IEnumerator launchThing()

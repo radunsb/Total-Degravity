@@ -1,7 +1,0 @@
-Shader"Darkness"
-{
-    SubShader
-    {
-        Pass{}
-    }
-}

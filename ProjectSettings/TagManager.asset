@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Sword
   - Wall
+  - Reactor
+  - Shield
+  - BananaText
   layers:
   - Default
   - TransparentFX
