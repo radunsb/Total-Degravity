@@ -20,7 +20,11 @@ public class ConsoleScript : MonoBehaviour
 
             GetComponent<Renderer>().materials = new Material[] { dullMat};
             columnRibMR.materials = new Material[] { dullMat };
-            shield.takeConsoleDestroyDamage();
+
+            if (shield != null)
+            {
+                shield.takeConsoleDestroyDamage();
+            }
             //TODO: add a cool explosion here
         }
     }

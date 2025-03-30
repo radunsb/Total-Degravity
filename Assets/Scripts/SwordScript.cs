@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class SwordScript : MonoBehaviour
 {
-    public float swordPower;
+    public float swordFrontPower;
+    public float swordBackPower;    
+
     public float maxChargeTime;
 
     public float swingSpeed;
@@ -24,14 +26,19 @@ public class SwordScript : MonoBehaviour
     public Vector3 swordChargingPosition;
     public Vector3 swordChargingRotation;
 
-    public Vector3 swordSwingFinalPosition;
-    public Vector3 swordSwingFinalRotation;
+    public Vector3 swordFrontSwingFinalPosition;
+    public Vector3 swordFrontSwingFinalRotation;
+
+    public Vector3 swordBackSwingFinalPosition;
+    public Vector3 swordBackSwingFinalRotation;
 
     Vector3 _destPosition;
     Vector3 _destRotation;
     float _swordSpeed;
 
     bool _charging = false;
+    bool _front = false;
+
     float _chargeTime = 0;
 
     float _swingTime = 0;
@@ -82,7 +89,7 @@ public class SwordScript : MonoBehaviour
         {
             _swingTime += Time.deltaTime;
 
-            swing();
+            swing(_front);
         }
         //we're neither charging nor swinging
         else
@@ -93,9 +100,16 @@ public class SwordScript : MonoBehaviour
         moveSword();
     }
 
-    void OnSword(InputValue value)
+    void OnSwordFront(InputValue value)
     {
         _charging = value.Get<float>() > 0;
+        _front = true;
+    }
+
+    void OnSwordBack(InputValue value)
+    {
+        _charging = value.Get<float>() > 0;
+        _front = false;
     }
 
     void charge()
@@ -116,10 +130,18 @@ public class SwordScript : MonoBehaviour
 
     //we call swing every frame while we're swinging
     //that is, every frame where chargeTime > 0 and charging is false
-    void swing()
+    void swing(bool front)
     {
-        _destPosition = swordSwingFinalPosition;
-        _destRotation = swordSwingFinalRotation;
+        if (front)
+        {
+            _destPosition = swordFrontSwingFinalPosition;
+            _destRotation = swordFrontSwingFinalRotation;
+        }
+        else
+        {
+            _destPosition = swordBackSwingFinalPosition;
+            _destRotation = swordBackSwingFinalRotation;
+        }        
         _swordSpeed = swingSpeed;
         swordCollider.enabled = true;
     }
@@ -136,7 +158,15 @@ public class SwordScript : MonoBehaviour
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
 
-        Vector3 launchForce = swordPower * transform.forward * _chargeTime;
+        Vector3 launchForce;
+        if (_front)
+        {
+            launchForce = swordFrontPower * transform.forward * _chargeTime;
+        }
+        else
+        {
+            launchForce = -1 * swordBackPower * transform.forward * _chargeTime;
+        }
 
         if (other.CompareTag("Reactor"))
         {
@@ -148,7 +178,6 @@ public class SwordScript : MonoBehaviour
 
         if (otherRB != null)
         {
-
             otherRB.AddForce(launchForce);
             _rb.AddForce(-1 * launchForce);
 

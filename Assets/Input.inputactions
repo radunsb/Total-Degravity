@@ -6,10 +6,19 @@
             "id": "4859849a-6768-48fa-b49b-ba4a5df56b26",
             "actions": [
                 {
-                    "name": "Sword",
+                    "name": "SwordFront",
                     "type": "Value",
                     "id": "f0ab32fb-ebdc-4647-a405-d74efb3aaa15",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SwordBack",
+                    "type": "Value",
+                    "id": "07ed807e-15ec-4645-8df3-111d40d0522f",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -50,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sword",
+                    "action": "SwordFront",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -61,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sword",
+                    "action": "SwordFront",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -72,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sword",
+                    "action": "SwordFront",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -205,6 +214,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Banana",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a84cbe35-4e8c-431b-b3d6-3eb1cdea0471",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
