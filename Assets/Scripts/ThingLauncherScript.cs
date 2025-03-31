@@ -15,6 +15,8 @@ public class ThingLauncherScript : MonoBehaviour
     public float launchCooldown;
     float _lastLaunchTime = int.MinValue;
 
+    public float launchDelay;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sword") && Time.time > _lastLaunchTime + launchCooldown)
@@ -35,7 +37,7 @@ public class ThingLauncherScript : MonoBehaviour
 
     private IEnumerator launchThing()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(launchDelay);
 
         int thingIndex = (int)(Random.value * thingsToLaunch.Length);
 

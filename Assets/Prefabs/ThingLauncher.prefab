@@ -6069,9 +6069,10 @@ MonoBehaviour:
   - {fileID: 5846280554496251661, guid: d5c9ce1535c5d5542b67b1b97200262e, type: 3}
   launchFrom: {fileID: 7879361962496559984}
   launchTowards: {fileID: 6510782395098299559}
-  launchSpeed: 5
-  launchRotation: 0
+  launchSpeed: 10
+  launchRotation: 1
   launchCooldown: 2
+  launchDelay: 1.5
 --- !u!135 &5514206857808476490
 SphereCollider:
   m_ObjectHideFlags: 0
