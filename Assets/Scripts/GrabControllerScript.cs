@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectGrabScript : MonoBehaviour
 {
+    public Transform cameraTransform;
     public Transform holdArea;
     private GameObject heldObject;
     private Rigidbody heldObjectRBody;
@@ -11,26 +13,42 @@ public class ObjectGrabScript : MonoBehaviour
     private float pickupRange = 5.0f;
     private float pickupForce = 150.0f;
 
+    private bool _grabbing = false;
+
+    private void Start()
+    {
+        cameraTransform = GetComponent<Transform>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // TODO: change to input system
+        if (heldObject != null)
+        {
+            MoveObject();
+        }
+    }
+
+    void OnGrab(InputValue value)
+    {
+        _grabbing = !_grabbing;
+
+        if (_grabbing)
         {
             if (heldObject == null)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, pickupRange))
                 {
-                    PickupObject(hit.transform.gameObject);
+                    if (hit.transform.gameObject.CompareTag("Grabbable"))
+                    {
+                        PickupObject(hit.transform.gameObject);
+                    }
                 }
             }
             else
             {
                 DropObject();
             }
-        }
-        if (heldObject != null)
-        {
-            MoveObject();
         }
     }
 

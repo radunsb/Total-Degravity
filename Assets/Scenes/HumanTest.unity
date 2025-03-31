@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 80131621}
   - component: {fileID: 80131622}
   - component: {fileID: 80131623}
+  - component: {fileID: 80131624}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -454,6 +455,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _netProjectilePrefab: {fileID: 3397317983255738217, guid: 328bafdd63d32994ab64d2eb4e145a47, type: 3}
   _netProjectileSpawnPoint: {fileID: 1835208481}
+--- !u!114 &80131624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80131611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1fd507319ca944dbb85b54c2e5000d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 1170683549}
+  holdArea: {fileID: 2132620114}
 --- !u!1 &205676649
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1006,7 @@ GameObject:
   - component: {fileID: 978497761}
   m_Layer: 0
   m_Name: GrabbableCube
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,7 +1240,6 @@ GameObject:
   - component: {fileID: 1170683549}
   - component: {fileID: 1170683548}
   - component: {fileID: 1170683547}
-  - component: {fileID: 1170683550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1308,19 +1322,6 @@ Transform:
   - {fileID: 2132620114}
   m_Father: {fileID: 80131615}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1170683550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170683546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1fd507319ca944dbb85b54c2e5000d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdArea: {fileID: 2132620114}
 --- !u!1 &1561615099
 GameObject:
   m_ObjectHideFlags: 0

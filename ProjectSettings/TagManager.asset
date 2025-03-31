@@ -10,6 +10,7 @@ TagManager:
   - Shield
   - BananaText
   - NetProjectile
+  - Grabbable
   layers:
   - Default
   - TransparentFX

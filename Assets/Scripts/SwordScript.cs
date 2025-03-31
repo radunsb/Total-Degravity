@@ -38,7 +38,9 @@ public class SwordScript : MonoBehaviour
 
     bool _charging = false;
     bool _front = false;
+    bool _netted = false;
 
+    float _hitsToBreakFree = 0;
     float _chargeTime = 0;
 
     float _swingTime = 0;
@@ -89,7 +91,22 @@ public class SwordScript : MonoBehaviour
         {
             _swingTime += Time.deltaTime;
 
-            swing(_front);
+            // if not trapped in a net, swing the sword normally
+            if (!_netted)
+            {
+                swing(_front);
+            }
+            // otherwise break free
+            else
+            {
+                // add a moveSword for while in the net
+                _hitsToBreakFree--;
+
+                if (_hitsToBreakFree <= 0)
+                {
+                    _netted = false;
+                }
+            }
         }
         //we're neither charging nor swinging
         else
@@ -152,9 +169,22 @@ public class SwordScript : MonoBehaviour
         swordTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(_destRotation), swordTransform.localRotation, _swordSpeed);
     }
 
+    void getNetted()
+    {
+        _netted = true;
+        _hitsToBreakFree = 3;
+
+        recover();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Trigger entered");
+
+        if (other.CompareTag("NetProjectile")){
+            getNetted();
+            return;
+        }
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
 
