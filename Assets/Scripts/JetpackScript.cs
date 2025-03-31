@@ -10,39 +10,41 @@ public class JetpackScript : MonoBehaviour
     bool _thrusting = false;
     bool _backwardsThrusting = false;
     Vector2 _horizontalThrusting;
+    float[] thrustThresholds = { 2, 1.5f, 1 };
 
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody>();
+        thrustForce = thrustForce / 50f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (_thrusting)
         {
-            _rbody.AddForce(_rbody.transform.up * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(_rbody.transform.up * thrustForce, ForceMode.Impulse);
         }
         else if (_backwardsThrusting)
         {
-            _rbody.AddForce(-1 * _rbody.transform.up * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(-1 * _rbody.transform.up * thrustForce, ForceMode.Impulse);
         }
         if(_horizontalThrusting.y > 0)
         {
-            _rbody.AddForce(_rbody.transform.forward * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(_rbody.transform.forward * thrustForce, ForceMode.Impulse);
         }
         else if(_horizontalThrusting.y < 0)
         {
-            _rbody.AddForce(-1 * _rbody.transform.forward * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(-1 * _rbody.transform.forward * thrustForce, ForceMode.Impulse);
         }
         if(_horizontalThrusting.x > 0)
         {
-            _rbody.AddForce(_rbody.transform.right * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(_rbody.transform.right * thrustForce, ForceMode.Impulse);
         }
         else if (_horizontalThrusting.x < 0)
         {
-            _rbody.AddForce(-1 * _rbody.transform.right * thrustForce * Time.deltaTime, ForceMode.Impulse);
+            _rbody.AddForce(-1 * _rbody.transform.right * thrustForce, ForceMode.Impulse);
         }
     }
 
