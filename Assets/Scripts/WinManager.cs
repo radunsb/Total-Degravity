@@ -6,7 +6,8 @@ using TMPro;
 public class WinManager : MonoBehaviour
 {
     public float secondsRemaining;
-    public TMP_Text countdownText; 
+    public TMP_Text countdownText;
+    public bool _gameStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,13 @@ public class WinManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        secondsRemaining -= Time.deltaTime;
-        int minutes = (int)(secondsRemaining / 60);
-        int seconds = (int)(secondsRemaining % 60);
-        countdownText.text = string.Format("{0}:{1:00}",minutes, seconds); 
-
+        if (_gameStarted)
+        {
+            secondsRemaining -= Time.deltaTime;
+            int minutes = (int)(secondsRemaining / 60);
+            int seconds = (int)(secondsRemaining % 60);
+            countdownText.text = string.Format("{0}:{1:00}", minutes, seconds);
+        }
         if (secondsRemaining <= 0) { 
             //TODO: the astronaut wins
         }

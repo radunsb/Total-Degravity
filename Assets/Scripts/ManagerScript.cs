@@ -11,6 +11,7 @@ public class ManagerScript : MonoBehaviour
     public Text p1Text;
     public Text p2Text;
     bool playerOneIn = false;
+    public WinManager _winManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class ManagerScript : MonoBehaviour
 
     public void onSecondPlayerJoin()
     {
+        _winManager._gameStarted = true;
         p2Text.gameObject.SetActive(false);
     }
 
