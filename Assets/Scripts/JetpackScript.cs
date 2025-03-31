@@ -9,6 +9,7 @@ public class JetpackScript : MonoBehaviour
 
     bool _thrusting = false;
     bool _backwardsThrusting = false;
+    Vector2 _horizontalThrusting;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,22 @@ public class JetpackScript : MonoBehaviour
         {
             _rbody.AddForce(-1 * _rbody.transform.up * thrustForce * Time.deltaTime, ForceMode.Impulse);
         }
+        if(_horizontalThrusting.y > 0)
+        {
+            _rbody.AddForce(_rbody.transform.forward * thrustForce * Time.deltaTime, ForceMode.Impulse);
+        }
+        else if(_horizontalThrusting.y < 0)
+        {
+            _rbody.AddForce(-1 * _rbody.transform.forward * thrustForce * Time.deltaTime, ForceMode.Impulse);
+        }
+        if(_horizontalThrusting.x > 0)
+        {
+            _rbody.AddForce(_rbody.transform.right * thrustForce * Time.deltaTime, ForceMode.Impulse);
+        }
+        else if (_horizontalThrusting.x < 0)
+        {
+            _rbody.AddForce(-1 * _rbody.transform.right * thrustForce * Time.deltaTime, ForceMode.Impulse);
+        }
     }
 
     void OnJetpack(InputValue value)
@@ -36,5 +53,10 @@ public class JetpackScript : MonoBehaviour
     void OnReverse(InputValue value)
     {
         _backwardsThrusting = value.Get<float>() > 0;
+    }
+    
+    void OnRotate(InputValue value)
+    {
+        _horizontalThrusting = value.Get<Vector2>();
     }
 }
