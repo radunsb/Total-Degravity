@@ -33,15 +33,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Lock",
-                    "type": "Button",
-                    "id": "8c1f5187-174f-4605-9f78-5fef19cdd151",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Banana",
                     "type": "Button",
                     "id": "96f6d72d-c0f4-40bf-a8f9-a367df726afa",
@@ -197,17 +188,6 @@
                 },
                 {
                     "name": "",
-                    "id": "97d51ab7-b68a-4f61-9b64-07605536dfb0",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lock",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2fd1167e-ce65-49a6-a103-3b54969176b3",
                     "path": "<Keyboard>/c",
                     "interactions": "",
@@ -219,8 +199,41 @@
                 },
                 {
                     "name": "",
+                    "id": "d0693e61-47e2-419f-9694-568c71af2e94",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Banana",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a84cbe35-4e8c-431b-b3d6-3eb1cdea0471",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a93b5b4-7f8c-4702-af9a-867ebadc0baa",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebe761be-8667-4955-bc88-e97d0d810d01",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
