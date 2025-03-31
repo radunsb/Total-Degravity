@@ -46,10 +46,13 @@ public class SwordScript : MonoBehaviour
     Rigidbody _rb;
     BoxCollider _swordZone;
 
+    WinManager _winManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        _winManager = GameObject.FindObjectOfType<WinManager>();
         _destPosition = swordRestPosition;
         _destRotation = swordRestRotation;
 
@@ -102,14 +105,20 @@ public class SwordScript : MonoBehaviour
 
     void OnSwordFront(InputValue value)
     {
-        _charging = value.Get<float>() > 0;
-        _front = true;
+        if (_winManager._gameStarted)
+        {
+            _charging = value.Get<float>() > 0;
+            _front = true;
+        }
     }
 
     void OnSwordBack(InputValue value)
     {
-        _charging = value.Get<float>() > 0;
-        _front = false;
+        if (_winManager._gameStarted)
+        {
+            _charging = value.Get<float>() > 0;
+            _front = false;
+        }
     }
 
     void charge()
