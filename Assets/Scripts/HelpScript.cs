@@ -26,6 +26,13 @@ public class HelpScript : MonoBehaviour
         
     }
 
+    public void OnControls()
+    {
+        screens[0].SetActive(false);
+        screens[8].SetActive(true);
+        StartCoroutine(setCurrentScreenOn(8));
+    }
+
     IEnumerator setCurrentScreenOn(int num)
     {
         yield return new WaitForEndOfFrame();
@@ -41,13 +48,13 @@ public class HelpScript : MonoBehaviour
                 buttons[_buttonActive].onClick.Invoke();
             }
         }
-        if(currentScreenOn >= 1 && currentScreenOn < 4)
+        if(currentScreenOn >= 1 && currentScreenOn < 7 || currentScreenOn == 8)
         {
             screens[currentScreenOn].SetActive(false);
             currentScreenOn++;
             screens[currentScreenOn].SetActive(true);
         }
-        else if(currentScreenOn == 4)
+        else if(currentScreenOn == 7 || currentScreenOn == 9)
         {
             screens[currentScreenOn].SetActive(false);
             currentScreenOn = 0;

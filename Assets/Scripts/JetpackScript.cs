@@ -10,7 +10,6 @@ public class JetpackScript : MonoBehaviour
     bool _thrusting = false;
     bool _backwardsThrusting = false;
     Vector2 _horizontalThrusting;
-    float[] thrustThresholds = { 2, 1.5f, 1 };
 
     // Start is called before the first frame update
     void Start()
