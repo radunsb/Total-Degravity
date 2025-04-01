@@ -74,7 +74,7 @@ public class ObjectGrabScript : MonoBehaviour
 
     void MoveObject()
     {
-        heldObject.transform.localPosition = Vector3.Lerp(heldObject.transform.localPosition, Vector3.zero, 0.2f);
+        heldObject.transform.localPosition = Vector3.zero;
     }
 
     void PickupObject(GameObject grabbedObject)
@@ -103,27 +103,27 @@ public class ObjectGrabScript : MonoBehaviour
 
     void MoveArmsToGrab()
     {
-        rightArm.position = Vector3.Slerp(rightArm.position, rArmGrabPosition, armSpeed);
-        rightArm.localEulerAngles = Vector3.Slerp(rightArm.localEulerAngles, rArmGrabRotation, armSpeed);
+        rightArm.localPosition = Vector3.Slerp(rightArm.localPosition, rArmGrabPosition, armSpeed);
+        rightArm.localEulerAngles = rArmGrabRotation;
         rightArm.localScale = Vector3.Slerp(rightArm.localScale, rArmGrabScale, armSpeed);
 
         Vector3 lArmGrabScale = new Vector3(-1 * rArmGrabScale.x, rArmGrabScale.y, rArmGrabScale.z);
 
-        leftArm.position = Vector3.Slerp(leftArm.position, rArmGrabPosition, armSpeed);
-        leftArm.localEulerAngles = Vector3.Slerp(leftArm.localEulerAngles, rArmGrabRotation, armSpeed);
-        leftArm.localScale = Vector3.Slerp(leftArm.localScale, rArmGrabScale, armSpeed);
+        leftArm.localPosition = Vector3.Slerp(leftArm.localPosition, rArmGrabPosition, armSpeed);
+        leftArm.localEulerAngles = rArmGrabRotation;
+        leftArm.localScale = Vector3.Slerp(leftArm.localScale, lArmGrabScale, armSpeed);
     }
 
     void MoveArmsToRest()
     {
-        rightArm.position = Vector3.Slerp(rightArm.position, rArmRestPosition, armSpeed);
-        rightArm.localEulerAngles = Vector3.Slerp(rightArm.localEulerAngles, rArmRestRotation, armSpeed);
+        rightArm.localPosition = Vector3.Slerp(rightArm.localPosition, rArmRestPosition, armSpeed);
+        rightArm.localEulerAngles = rArmRestRotation;
         rightArm.localScale = Vector3.Slerp(rightArm.localScale, rArmRestScale, armSpeed);
 
         Vector3 lArmRestScale = new Vector3(-1 * rArmRestScale.x, rArmRestScale.y, rArmRestScale.z);
 
-        leftArm.position = Vector3.Slerp(leftArm.position, rArmRestPosition, armSpeed);
-        leftArm.localEulerAngles = Vector3.Slerp(leftArm.localEulerAngles, rArmRestRotation, armSpeed);
-        leftArm.localScale = Vector3.Slerp(leftArm.localScale, rArmRestScale, armSpeed);
+        leftArm.localPosition = Vector3.Slerp(leftArm.localPosition, rArmRestPosition, armSpeed);
+        leftArm.localEulerAngles = rArmRestRotation;
+        leftArm.localScale = Vector3.Slerp(leftArm.localScale, lArmRestScale, armSpeed);
     }
 }
