@@ -327,6 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _netProjectilePrefab: {fileID: 3397317983255738217, guid: 328bafdd63d32994ab64d2eb4e145a47, type: 3}
   _netProjectileSpawnPoint: {fileID: 1069663117568465805}
+  shootCooldown: 5
 --- !u!114 &6734148915475482442
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,9 +37,8 @@ public class SwordScript : MonoBehaviour
 
     bool _charging = false;
     bool _front = false;
-    bool _netted = false;
+    bool _isNetted = false;
 
-    float _hitsToBreakFree = 0;
     float _chargeTime = 0;
 
     float _swingTime = 0;
@@ -66,65 +65,55 @@ public class SwordScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (_charging)
+        if (!_isNetted)
         {
-            _swingTime = 0;
-
-            charge();
-
-            if (_chargeTime >= maxChargeTime)
+            if (_charging)
             {
-                _chargeTime = maxChargeTime;
-            }
-            else
-            {
-                _chargeTime += Time.deltaTime;
-            }
-        }
-        else if(_swingTime >= maxSwingTime)
-        {
-            _swingTime = 0;
-            _chargeTime = 0;
-        }
-        //if we aren't charging, but we have a charge built up
-        //swing the sword
-        else if (_chargeTime > 0)
-        {
-            _swingTime += Time.deltaTime;
+                _swingTime = 0;
 
-            // if not trapped in a net, swing the sword normally
-            if (!_netted)
-            {
-                swing(_front);
-            }
-            // otherwise break free
-            else
-            {
-                // add a moveSword for while in the net
-                _hitsToBreakFree--;
+                charge();
 
-                if (_hitsToBreakFree <= 0)
+                if (_chargeTime >= maxChargeTime)
                 {
-                    _netted = false;
+                    _chargeTime = maxChargeTime;
+                }
+                else
+                {
+                    _chargeTime += Time.deltaTime;
                 }
             }
-        }
-        //we're neither charging nor swinging
-        else
-        {
-            recover();
-        }
+            else if (_swingTime >= maxSwingTime)
+            {
+                _swingTime = 0;
+                _chargeTime = 0;
+            }
+            //if we aren't charging, but we have a charge built up
+            //swing the sword
+            else if (_chargeTime > 0)
+            {
+                _swingTime += Time.deltaTime;
 
-        moveSword();
+                swing(_front);
+            }
+            //we're neither charging nor swinging
+            else
+            {
+                recover();
+            }
+
+            moveSword();
+        }
     }
 
     void OnSwordFront(InputValue value)
     {
         if (_winManager._gameStarted)
         {
-            _charging = value.Get<float>() > 0;
-            _front = true;
+            if (!_isNetted)
+            {
+                _charging = value.Get<float>() > 0;
+                _front = true;
+            }
         }
     }
 
@@ -132,8 +121,11 @@ public class SwordScript : MonoBehaviour
     {
         if (_winManager._gameStarted)
         {
-            _charging = value.Get<float>() > 0;
-            _front = false;
+            if (!_isNetted)
+            {
+                _charging = value.Get<float>() > 0;
+                _front = false;
+            }
         }
     }
 
@@ -177,22 +169,20 @@ public class SwordScript : MonoBehaviour
         swordTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(_destRotation), swordTransform.localRotation, _swordSpeed);
     }
 
-    void getNetted()
+    public void getNetted()
     {
-        _netted = true;
-        _hitsToBreakFree = 3;
-
+        _isNetted = true;
         recover();
+    }
+
+    public void breakFree()
+    {
+        _isNetted = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Trigger entered");
-
-        if (other.CompareTag("NetProjectile")){
-            getNetted();
-            return;
-        }
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
 

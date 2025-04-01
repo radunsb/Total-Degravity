@@ -28,9 +28,15 @@ public class NetScript : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.SetActive(false);
+    }
+
     IEnumerator Deactivate()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.SetActive(false);
     }
