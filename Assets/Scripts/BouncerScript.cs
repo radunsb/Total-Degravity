@@ -5,6 +5,8 @@ using UnityEngine;
 public class BouncerScript : MonoBehaviour
 {
     public float bounceForce;
+    public AudioSource _as;
+    public AudioClip _boing;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,7 +19,7 @@ public class BouncerScript : MonoBehaviour
 
             otherRB.AddForce(force);
 
-            //TODO: add boing sound effect
+            _as.PlayOneShot(_boing);
         }
     }
 }

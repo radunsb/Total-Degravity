@@ -15,6 +15,12 @@ public class ReactorScript : MonoBehaviour
 
     WinManager _winManager;
 
+    public AudioSource _as;
+
+    public AudioClip _damage;
+
+    public AudioClip _destroy;
+
     private void Start()
     {
         _health = maxHealth;
@@ -45,10 +51,21 @@ public class ReactorScript : MonoBehaviour
     {
         _health -= damage;
 
-        if(_health <= 0) { 
-            Destroy(gameObject);
-            _winManager.MonkeyWin();
+        if(_health <= 0) {
+            _as.PlayOneShot(_destroy);
+            StartCoroutine(MonkeyWin());
         }
+        else
+        {
+            _as.PlayOneShot(_damage);
+        }
+    }
+
+    IEnumerator MonkeyWin()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+        _winManager.MonkeyWin();
     }
 
     public float getHealthFraction()
