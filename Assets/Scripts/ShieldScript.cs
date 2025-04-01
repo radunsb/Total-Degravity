@@ -17,12 +17,13 @@ public class ShieldScript : MonoBehaviour
 
     public Collider reactorCollider;
 
-    AudioSource _as;
+    public AudioSource _as;
+    public AudioClip _damage;
+    public AudioClip _break;
 
     private void Start()
     {
         _health = maxHealth;
-        _as = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -36,7 +37,6 @@ public class ShieldScript : MonoBehaviour
             if (momentum > minMomentumForDamage)
             {
                 takeDamage(momentum * momentumDamageModifier);
-                _as.Play();
             }
         }
     }
@@ -60,7 +60,12 @@ public class ShieldScript : MonoBehaviour
         if (_health <= 0)
         {
             reactorCollider.enabled = true;
+            _as.PlayOneShot(_break);
             Destroy(gameObject);
+        }
+        else
+        {
+            _as.PlayOneShot(_damage);
         }
     }
 
