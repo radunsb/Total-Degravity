@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelpScene.unity
     guid: b66d8aa96b113154984cc3a6ced86bd1
+  - enabled: 1
+    path: Assets/Scenes/HumanWinScene.unity
+    guid: fcdd2b567b335d64db810193b03621bd
+  - enabled: 1
+    path: Assets/Scenes/MonkeyWinScene.unity
+    guid: 20eb5976d3c7d764592c6a71dfb70aaa
   m_configObjects: {}

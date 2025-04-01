@@ -13,9 +13,12 @@ public class ReactorScript : MonoBehaviour
 
     public float minMomentumForDamage;
 
+    WinManager _winManager;
+
     private void Start()
     {
         _health = maxHealth;
+        _winManager = GameObject.FindObjectOfType<WinManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,7 +47,7 @@ public class ReactorScript : MonoBehaviour
 
         if(_health <= 0) { 
             Destroy(gameObject);
-            //TODO: make the monkey win 
+            _winManager.MonkeyWin();
         }
     }
 

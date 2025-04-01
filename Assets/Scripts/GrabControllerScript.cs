@@ -59,7 +59,7 @@ public class ObjectGrabScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, pickupRange))
                 {
-                    if (hit.transform.gameObject.CompareTag("Grabbable"))
+                    if (hit.transform.gameObject.CompareTag("Grabbable") || hit.transform.gameObject.CompareTag("Player"))
                     {
                         PickupObject(hit.transform.gameObject);
                     }
