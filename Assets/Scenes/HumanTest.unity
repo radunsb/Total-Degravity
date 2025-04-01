@@ -781,6 +781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human
       objectReference: {fileID: 0}
+    - target: {fileID: 3390889018106112986, guid: ee02ad23303b64246970efc4ad2476de, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7847255039194309815, guid: ee02ad23303b64246970efc4ad2476de, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
       value: 0
@@ -788,6 +792,10 @@ PrefabInstance:
     - target: {fileID: 7847255039194309815, guid: ee02ad23303b64246970efc4ad2476de, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391600821502771205, guid: ee02ad23303b64246970efc4ad2476de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8980188930043380623, guid: ee02ad23303b64246970efc4ad2476de, type: 3}
       propertyPath: m_LocalPosition.x

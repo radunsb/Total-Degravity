@@ -12,6 +12,7 @@ public class ObjectGrabScript : MonoBehaviour
 
     private float pickupRange = 5.0f;
     private float pickupForce = 150.0f;
+    private float throwForce = 20;
 
     private bool _grabbing = false;
 
@@ -20,7 +21,7 @@ public class ObjectGrabScript : MonoBehaviour
         cameraTransform = GetComponent<Transform>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (heldObject != null)
         {
@@ -54,12 +55,7 @@ public class ObjectGrabScript : MonoBehaviour
 
     void MoveObject()
     {
-        if (Vector3.Distance(heldObject.transform.position, holdArea.position) > 0.1f)
-        {
-            Vector3 moveDirection = (holdArea.position - holdArea.transform.position);
-
-            heldObjectRBody.AddForce(moveDirection * pickupForce);
-        }
+        heldObject.transform.localPosition = Vector3.Lerp(heldObject.transform.localPosition, Vector3.zero, 0.2f);
     }
 
     void PickupObject(GameObject grabbedObject)
@@ -81,7 +77,7 @@ public class ObjectGrabScript : MonoBehaviour
         // heldObjectRBody.useGravity = true;
         heldObjectRBody.drag = 1;
         heldObjectRBody.constraints = RigidbodyConstraints.None;
-
+        heldObjectRBody.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
         heldObject.transform.parent = null;
         heldObject = null;
     }
