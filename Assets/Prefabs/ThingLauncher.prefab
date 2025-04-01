@@ -6084,9 +6084,9 @@ MonoBehaviour:
   launchRotation: 1
   launchCooldown: 2
   launchDelay: 1.5
-  mr: {fileID: 7829960815477106399}
   normalMat: {fileID: 2100000, guid: c03e98dcfd949af499d7b7a63db347df, type: 2}
-  chargingMat: {fileID: 2100000, guid: 0b1c492a66c748d41afcff2eb0b4c8e6, type: 2}
+  chargeMat: {fileID: 2100000, guid: 0b1c492a66c748d41afcff2eb0b4c8e6, type: 2}
+  meh: {fileID: 7829960815477106399}
 --- !u!136 &8320282343411896990
 CapsuleCollider:
   m_ObjectHideFlags: 0

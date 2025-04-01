@@ -17,14 +17,18 @@ public class ThingLauncherScript : MonoBehaviour
 
     public float launchDelay;
 
-    private void OnTriggerEnter(Collider other)
+    public Material normalMat;
+    public Material chargeMat;
+
+    public MeshRenderer meh;
+
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Sword") && Time.time > _lastLaunchTime + launchCooldown)
+        if (Time.time > _lastLaunchTime + launchCooldown)
         {
             _lastLaunchTime = Time.time;
             StartCoroutine(launchThing());
         }
-        
     }
     private void Update()
     {
@@ -37,7 +41,9 @@ public class ThingLauncherScript : MonoBehaviour
 
     private IEnumerator launchThing()
     {
+        meh.material = chargeMat;
         yield return new WaitForSeconds(launchDelay);
+        meh.material = normalMat;
 
         int thingIndex = (int)(Random.value * thingsToLaunch.Length);
 
