@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WinManager : MonoBehaviour
 {
@@ -25,14 +26,14 @@ public class WinManager : MonoBehaviour
             int seconds = (int)(secondsRemaining % 60);
             countdownText.text = string.Format("{0}:{1:00}", minutes, seconds);
         }
-        if (secondsRemaining <= 0) { 
-            //TODO: the astronaut wins
+        if (secondsRemaining <= 0) {
+            SceneManager.LoadScene("HumanWinScene");
         }
     }
 
     //TODO: either the reactor calls this method
     public void MonkeyWin()
     {
-
+        SceneManager.LoadScene("MonkeyWinScene");
     }
 }
