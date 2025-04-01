@@ -23,6 +23,14 @@ public class MonkeScript : MonoBehaviour
         _winManager = GameObject.FindObjectOfType<WinManager>();
     }
 
+    private void Update()
+    {
+        if(transform.position.magnitude > 47)
+        {
+            transform.position = transform.position.normalized * 47;
+        }
+    }
+
 
     private void OnBanana(InputValue value)
     {

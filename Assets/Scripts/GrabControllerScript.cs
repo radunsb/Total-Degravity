@@ -94,7 +94,7 @@ public class ObjectGrabScript : MonoBehaviour
     void DropObject()
     {
         // heldObjectRBody.useGravity = true;
-        heldObjectRBody.drag = 1;
+        heldObjectRBody.drag = 0;
         heldObjectRBody.constraints = RigidbodyConstraints.None;
         heldObjectRBody.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
         heldObject.transform.parent = null;
