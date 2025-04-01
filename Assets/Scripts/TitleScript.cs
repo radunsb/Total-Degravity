@@ -11,6 +11,9 @@ public class TitleScript : MonoBehaviour
 {
     public Button[] buttons;
     public int _buttonActive = -1;
+    public AudioSource _as;
+    public AudioClip _buttonChange;
+    public AudioClip _buttonConfirm;
 
     private void Start()
     {
@@ -39,6 +42,7 @@ public class TitleScript : MonoBehaviour
         if(_buttonActive != -1)
         {
             buttons[_buttonActive].onClick.Invoke();
+            _as.PlayOneShot(_buttonConfirm);
         }
     }
 
@@ -53,6 +57,7 @@ public class TitleScript : MonoBehaviour
             _buttonActive = (_buttonActive - 1 + buttons.Length) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
+        _as.PlayOneShot(_buttonChange);
     }
     void OnScrollDown(InputValue value)
     {
@@ -65,5 +70,6 @@ public class TitleScript : MonoBehaviour
             _buttonActive = (_buttonActive + 1) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
+        _as.PlayOneShot(_buttonChange);
     }
 }
