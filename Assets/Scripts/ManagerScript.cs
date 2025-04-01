@@ -46,7 +46,7 @@ public class ManagerScript : MonoBehaviour
 
     IEnumerator waitToSayPlayerIn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.2f);
         playerOneIn = true;
     }
 }
