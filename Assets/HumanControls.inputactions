@@ -361,7 +361,7 @@
                 {
                     "name": "",
                     "id": "9d88c460-582e-43a7-b8a3-ebba8ee30aa4",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -373,6 +373,17 @@
                     "name": "",
                     "id": "bde6653c-9a9e-4b9e-b8e5-de877eb9fbe4",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e744a731-0fcf-4559-a86a-20904f7f83db",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
