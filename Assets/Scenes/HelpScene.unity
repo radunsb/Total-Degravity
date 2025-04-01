@@ -1329,7 +1329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fire Net
+  m_Text: Grab/Throw Object
 --- !u!222 &375475836
 CanvasRenderer:
   m_ObjectHideFlags: 0
