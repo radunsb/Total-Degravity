@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7847255039194309815}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: HumanCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,6 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05017f29c71c504297b7f2933a8f893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reticule: {fileID: 2800000, guid: 6172341e64841ae4ba4d5fc139affc63, type: 3}
+  cam: {fileID: 7847255039194309815}
 --- !u!114 &6464220384270226649
 MonoBehaviour:
   m_ObjectHideFlags: 0

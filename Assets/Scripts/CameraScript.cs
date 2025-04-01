@@ -12,6 +12,22 @@ public class CameraScript : MonoBehaviour
     bool invertX;
     bool invertY;
     float lookSensitivity;
+
+    public Texture reticule;
+    public Camera cam;
+    private void OnGUI()
+    {
+        float endX = Screen.width;
+        int size = 30;
+        float posX = cam.pixelWidth / 2 - size / 4;
+        if(cam.tag == "HumanCamera")
+        {
+            posX = endX - posX;
+        }
+        float posY = cam.pixelHeight / 2 - size / 2;
+        GUI.Label(new Rect(posX, posY, size, size), reticule);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
