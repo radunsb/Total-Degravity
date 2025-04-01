@@ -681,6 +681,7 @@ MonoBehaviour:
   swordFrontSwingFinalRotation: {x: -16.8, y: -25, z: -23.6}
   swordBackSwingFinalPosition: {x: -0.85, y: 0.45, z: -2.6}
   swordBackSwingFinalRotation: {x: -10.84, y: -155.6, z: -216.2}
+  _basicStrike: {fileID: 8300000, guid: 84e1d30a0aa29c64fb7b6cddb3e97ffd, type: 3}
 --- !u!54 &7501979103286301505
 Rigidbody:
   m_ObjectHideFlags: 0

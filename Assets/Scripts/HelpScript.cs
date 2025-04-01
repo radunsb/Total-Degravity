@@ -15,6 +15,18 @@ public class HelpScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
+    float volume;
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
+        }
+        else
+        {
+            volume = 1;
+        }
+    }
     public void OnBack()
     {
         SceneManager.LoadScene("TitleScene");
@@ -48,7 +60,7 @@ public class HelpScript : MonoBehaviour
             if (_buttonActive != -1)
             {
                 buttons[_buttonActive].onClick.Invoke();
-                _as.PlayOneShot(_buttonConfirm);
+                _as.PlayOneShot(_buttonConfirm, volume);
             }
         }
         if(currentScreenOn >= 1 && currentScreenOn < 7 || currentScreenOn == 8)
@@ -56,14 +68,14 @@ public class HelpScript : MonoBehaviour
             screens[currentScreenOn].SetActive(false);
             currentScreenOn++;
             screens[currentScreenOn].SetActive(true);
-            _as.PlayOneShot(_buttonConfirm);
+            _as.PlayOneShot(_buttonConfirm, volume);
         }
         else if(currentScreenOn == 7 || currentScreenOn == 9)
         {
             screens[currentScreenOn].SetActive(false);
             currentScreenOn = 0;
             screens[currentScreenOn].SetActive(true);
-            _as.PlayOneShot(_buttonConfirm);
+            _as.PlayOneShot(_buttonConfirm, volume);
         }
         
     }
@@ -93,7 +105,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 
@@ -122,7 +134,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 
@@ -160,7 +172,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 

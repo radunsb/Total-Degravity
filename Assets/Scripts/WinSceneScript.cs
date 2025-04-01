@@ -13,6 +13,18 @@ public class WinSceneScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
+    float volume;
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
+        }
+        else
+        {
+            volume = 1;
+        }
+    }
     public void OnReplay()
     {
         SceneManager.LoadScene("GameScene");
@@ -33,7 +45,7 @@ public class WinSceneScript : MonoBehaviour
             _buttonActive = (_buttonActive - 1 + buttons.Length) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
     }
     void OnScrollDown(InputValue value)
     {
@@ -46,7 +58,7 @@ public class WinSceneScript : MonoBehaviour
             _buttonActive = (_buttonActive + 1) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
     }
 
     void OnAdvance(InputValue value)
@@ -54,7 +66,7 @@ public class WinSceneScript : MonoBehaviour
         if (_buttonActive != -1)
         {
             buttons[_buttonActive].onClick.Invoke();
-            _as.PlayOneShot(_buttonConfirm);
+            _as.PlayOneShot(_buttonConfirm, volume);
         }
     }
 }

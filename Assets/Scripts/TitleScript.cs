@@ -14,9 +14,17 @@ public class TitleScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
-
+    float volume;
     private void Start()
     {
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
+        }
+        else
+        {
+            volume = 1;
+        }
         EventSystem.current.SetSelectedGameObject(null);
     }
     public void OnQuit()
@@ -42,7 +50,7 @@ public class TitleScript : MonoBehaviour
         if(_buttonActive != -1)
         {
             buttons[_buttonActive].onClick.Invoke();
-            _as.PlayOneShot(_buttonConfirm);
+            _as.PlayOneShot(_buttonConfirm, volume);
         }
     }
 
@@ -57,7 +65,7 @@ public class TitleScript : MonoBehaviour
             _buttonActive = (_buttonActive - 1 + buttons.Length) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
     }
     void OnScrollDown(InputValue value)
     {
@@ -70,6 +78,6 @@ public class TitleScript : MonoBehaviour
             _buttonActive = (_buttonActive + 1) % buttons.Length;
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
     }
 }

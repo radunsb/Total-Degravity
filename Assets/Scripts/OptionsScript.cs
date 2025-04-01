@@ -16,11 +16,29 @@ public class OptionsScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
+    float volume;
     private void Start()
     {
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            volume = PlayerPrefs.GetFloat("SFXVol")/5f;
+        }
+        else
+        {
+            volume = 1;
+        }
+        
         if (PlayerPrefs.HasKey("lookSensitivity"))
         {
             sensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("lookSensitivity");
+        }
+        if (PlayerPrefs.HasKey("musicVol"))
+        {
+            musicVolSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("musicVol");
+        }
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            SFXVolSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("SFXVol");
         }
     }
     public void onBack()
@@ -31,6 +49,14 @@ public class OptionsScript : MonoBehaviour
     public void sensitivityChanged(float newSens)
     {
         PlayerPrefs.SetFloat("lookSensitivity", newSens);
+    }
+    public void musicVolChanged(float newVol)
+    {
+        PlayerPrefs.SetFloat("musicVol", newVol);
+    }
+    public void SFXVolChanged(float newVol)
+    {
+        PlayerPrefs.SetFloat("SFXVol", newVol);
     }
 
     void OnScrollUp(InputValue value)
@@ -43,7 +69,7 @@ public class OptionsScript : MonoBehaviour
         {
             _buttonActive = (_buttonActive - 1 + objects.Length) % objects.Length;
         }
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
         EventSystem.current.SetSelectedGameObject(objects[_buttonActive].gameObject);
     }
     void OnScrollDown(InputValue value)
@@ -56,14 +82,14 @@ public class OptionsScript : MonoBehaviour
         {
             _buttonActive = (_buttonActive + 1) % objects.Length;
         }
-        _as.PlayOneShot(_buttonChange);
+        _as.PlayOneShot(_buttonChange, volume);
         EventSystem.current.SetSelectedGameObject(objects[_buttonActive].gameObject);
     }
     void OnScrollRight(InputValue value)
     {
         if(_buttonActive >= 0 && _buttonActive <= 2)
         {
-            _as.PlayOneShot(_buttonChange);
+            _as.PlayOneShot(_buttonChange, volume);
             objects[_buttonActive].GetComponent<Slider>().value += 0.2f;
         }
     }
@@ -71,7 +97,7 @@ public class OptionsScript : MonoBehaviour
     {
         if (_buttonActive >= 0 && _buttonActive <= 2)
         {
-            _as.PlayOneShot(_buttonChange);
+            _as.PlayOneShot(_buttonChange, volume);
             objects[_buttonActive].GetComponent<Slider>().value -= 0.2f;
         }
     }
@@ -81,7 +107,7 @@ public class OptionsScript : MonoBehaviour
         if(_buttonActive == 3)
         {
             onBack();
-            _as.PlayOneShot(_buttonConfirm);
+            _as.PlayOneShot(_buttonConfirm, volume);
         }
     }
 }

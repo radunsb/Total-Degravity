@@ -22,19 +22,15 @@ public class ThingLauncherScript : MonoBehaviour
 
     public MeshRenderer meh;
 
+    public AudioSource _as;
+    public AudioClip _whoosh;
+
     void OnCollisionEnter(Collision collision)
     {
         if (Time.time > _lastLaunchTime + launchCooldown)
         {
             _lastLaunchTime = Time.time;
-            StartCoroutine(launchThing());
-        }
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            _lastLaunchTime = Time.time;
+            _as.PlayOneShot(_whoosh);
             StartCoroutine(launchThing());
         }
     }

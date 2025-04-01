@@ -48,9 +48,13 @@ public class SwordScript : MonoBehaviour
 
     WinManager _winManager;
 
+    AudioSource _as;
+    public AudioClip _basicStrike;
+
     // Start is called before the first frame update
     void Start()
     {
+        _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
         _winManager = GameObject.FindObjectOfType<WinManager>();
         _destPosition = swordRestPosition;
         _destRotation = swordRestRotation;
@@ -201,6 +205,10 @@ public class SwordScript : MonoBehaviour
         }
         else if (other.CompareTag("Shield")){
             other.gameObject.GetComponent<ShieldScript>().takeSwordDamage(launchForce.magnitude);
+        }
+        else
+        {
+            _as.PlayOneShot(_basicStrike);
         }
 
         if (otherRB != null)

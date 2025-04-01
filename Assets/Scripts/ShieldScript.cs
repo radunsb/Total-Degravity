@@ -54,8 +54,8 @@ public class ShieldScript : MonoBehaviour
     private void takeDamage(float damage)
     {
         Debug.LogFormat("Shiled taking damage: {0}", damage);
-
-        _health -= damage;
+        //Shield takes at least 3 sword hits
+        _health -= Mathf.Min(500, damage);
 
         if (_health <= 0)
         {
