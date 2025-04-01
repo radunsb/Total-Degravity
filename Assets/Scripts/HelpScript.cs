@@ -12,7 +12,9 @@ public class HelpScript : MonoBehaviour
     public GameObject[] screens;
     public Button[] buttons;
     int _buttonActive = -1;
-
+    public AudioSource _as;
+    public AudioClip _buttonChange;
+    public AudioClip _buttonConfirm;
     public void OnBack()
     {
         SceneManager.LoadScene("TitleScene");
@@ -46,6 +48,7 @@ public class HelpScript : MonoBehaviour
             if (_buttonActive != -1)
             {
                 buttons[_buttonActive].onClick.Invoke();
+                _as.PlayOneShot(_buttonConfirm);
             }
         }
         if(currentScreenOn >= 1 && currentScreenOn < 7 || currentScreenOn == 8)
@@ -53,12 +56,14 @@ public class HelpScript : MonoBehaviour
             screens[currentScreenOn].SetActive(false);
             currentScreenOn++;
             screens[currentScreenOn].SetActive(true);
+            _as.PlayOneShot(_buttonConfirm);
         }
         else if(currentScreenOn == 7 || currentScreenOn == 9)
         {
             screens[currentScreenOn].SetActive(false);
             currentScreenOn = 0;
             screens[currentScreenOn].SetActive(true);
+            _as.PlayOneShot(_buttonConfirm);
         }
         
     }
@@ -88,6 +93,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
+        _as.PlayOneShot(_buttonChange);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 
@@ -116,6 +122,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
+        _as.PlayOneShot(_buttonChange);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 
@@ -153,6 +160,7 @@ public class HelpScript : MonoBehaviour
                     break;
                 }
         }
+        _as.PlayOneShot(_buttonChange);
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
     }
 

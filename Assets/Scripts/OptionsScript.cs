@@ -13,6 +13,9 @@ public class OptionsScript : MonoBehaviour
     public GameObject SFXVolSlider;
     public GameObject[] objects;
     int _buttonActive = -1;
+    public AudioSource _as;
+    public AudioClip _buttonChange;
+    public AudioClip _buttonConfirm;
     private void Start()
     {
         if (PlayerPrefs.HasKey("lookSensitivity"))
@@ -40,6 +43,7 @@ public class OptionsScript : MonoBehaviour
         {
             _buttonActive = (_buttonActive - 1 + objects.Length) % objects.Length;
         }
+        _as.PlayOneShot(_buttonChange);
         EventSystem.current.SetSelectedGameObject(objects[_buttonActive].gameObject);
     }
     void OnScrollDown(InputValue value)
@@ -52,12 +56,14 @@ public class OptionsScript : MonoBehaviour
         {
             _buttonActive = (_buttonActive + 1) % objects.Length;
         }
+        _as.PlayOneShot(_buttonChange);
         EventSystem.current.SetSelectedGameObject(objects[_buttonActive].gameObject);
     }
     void OnScrollRight(InputValue value)
     {
         if(_buttonActive >= 0 && _buttonActive <= 2)
         {
+            _as.PlayOneShot(_buttonChange);
             objects[_buttonActive].GetComponent<Slider>().value += 0.2f;
         }
     }
@@ -65,6 +71,7 @@ public class OptionsScript : MonoBehaviour
     {
         if (_buttonActive >= 0 && _buttonActive <= 2)
         {
+            _as.PlayOneShot(_buttonChange);
             objects[_buttonActive].GetComponent<Slider>().value -= 0.2f;
         }
     }
@@ -74,6 +81,7 @@ public class OptionsScript : MonoBehaviour
         if(_buttonActive == 3)
         {
             onBack();
+            _as.PlayOneShot(_buttonConfirm);
         }
     }
 }

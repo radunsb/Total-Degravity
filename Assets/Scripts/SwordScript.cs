@@ -49,7 +49,6 @@ public class SwordScript : MonoBehaviour
 
     WinManager _winManager;
 
-
     // Start is called before the first frame update
     void Start()
     {
