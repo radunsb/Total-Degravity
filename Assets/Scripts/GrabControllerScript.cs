@@ -126,4 +126,12 @@ public class ObjectGrabScript : MonoBehaviour
         leftArm.localEulerAngles = rArmRestRotation;
         leftArm.localScale = Vector3.Slerp(leftArm.localScale, lArmRestScale, armSpeed);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Sword") && heldObject != null)
+        {
+            DropObject();
+        }
+    }
 }
