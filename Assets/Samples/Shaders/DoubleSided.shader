@@ -24,6 +24,7 @@ Shader"DoubleSided"
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 200
         ZWrite Off
+        cull off
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types

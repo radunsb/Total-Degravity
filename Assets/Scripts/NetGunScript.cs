@@ -32,7 +32,7 @@ public class NetGunScript : MonoBehaviour
         {
             GameObject net = _netProjectilePool.GetObject();
             net.transform.position = _netProjectileSpawnPoint.position;
-            net.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+            net.GetComponent<Rigidbody>().velocity = transform.forward * 40;
 
             shootTime = 0f;
         }
