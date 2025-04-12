@@ -11,7 +11,7 @@ public class HumanTutorialScript : MonoBehaviour
     public GameObject[] destroyOnThree;
     public int tutorialOn = 0;
     public GameObject[] tutorialMessages;
-    public Boolean[] showBox = { true, true, false };
+    public Boolean[] showBox;
     public GameObject textBox;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,16 @@ public class HumanTutorialScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (showBox[tutorialOn] == true)
+        {
+            textBox.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            textBox.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
     public void targetHit()
@@ -45,5 +54,16 @@ public class HumanTutorialScript : MonoBehaviour
         }
         tutorialMessages[tutorialOn - 1].SetActive(false);
         tutorialMessages[tutorialOn].SetActive(true);
+    }
+
+    public void setTutorialOn(int newTutorialOn)
+    {
+        tutorialMessages[newTutorialOn].SetActive(true);
+        for(int i = 0; i < newTutorialOn; i++)
+        {
+            tutorialMessages[i].SetActive(false);
+        }
+        tutorialOn = newTutorialOn;
+        print(tutorialOn);
     }
 }
