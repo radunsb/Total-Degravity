@@ -59,13 +59,16 @@ public class HumanTutorialScript : MonoBehaviour
 
     public void OnAdvance(InputValue value)
     {
-        tutorialOn++;
-        if (showBox[tutorialOn] == false)
+        if (showBox[tutorialOn] == true)
         {
-            textBox.SetActive(false);
+            tutorialOn++;
+            if (showBox[tutorialOn] == false)
+            {
+                textBox.SetActive(false);
+            }
+            tutorialMessages[tutorialOn - 1].SetActive(false);
+            tutorialMessages[tutorialOn].SetActive(true);
         }
-        tutorialMessages[tutorialOn - 1].SetActive(false);
-        tutorialMessages[tutorialOn].SetActive(true);
     }
 
     public void setTutorialOn(int newTutorialOn)
