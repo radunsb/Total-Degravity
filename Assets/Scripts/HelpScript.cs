@@ -47,6 +47,11 @@ public class HelpScript : MonoBehaviour
         StartCoroutine(setCurrentScreenOn(8));
     }
 
+    public void OnHumanTutorials()
+    {
+        SceneManager.LoadScene("HumanTutorial");
+    }
+
     IEnumerator setCurrentScreenOn(int num)
     {
         yield return new WaitForEndOfFrame();
