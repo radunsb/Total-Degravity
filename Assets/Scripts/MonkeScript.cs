@@ -117,6 +117,7 @@ public class MonkeScript : MonoBehaviour
         newBanana.SetActive(true);
         Rigidbody brb = newBanana.GetComponent<Rigidbody>();
 
+        brb.velocity = _rb.velocity;
         brb.AddForce(bananaForce * transform.forward, ForceMode.Impulse);
         brb.AddTorque(3 * new Vector3(Random.value, Random.value, Random.value));
     }

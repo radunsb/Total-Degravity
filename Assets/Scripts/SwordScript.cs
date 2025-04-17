@@ -18,21 +18,19 @@ public class SwordScript : MonoBehaviour
 
     public Transform swordTransform;
     public Collider swordCollider;
+    public Collider backFender; 
 
-    public Vector3 swordRestPosition;
-    public Vector3 swordRestRotation;
+    public Transform restTransform;
 
-    public Vector3 swordChargingPosition;
-    public Vector3 swordChargingRotation;
+    public Transform chargeTransform;
 
-    public Vector3 swordFrontSwingFinalPosition;
-    public Vector3 swordFrontSwingFinalRotation;
+    public Transform frontSwingTransform;
 
-    public Vector3 swordBackSwingFinalPosition;
-    public Vector3 swordBackSwingFinalRotation;
+    public Transform backSwingTransform;
 
-    Vector3 _destPosition;
-    Vector3 _destRotation;
+
+    Transform destination;    
+
     float _swordSpeed;
 
     bool _charging = false;
@@ -56,8 +54,8 @@ public class SwordScript : MonoBehaviour
     {
         _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
         _winManager = GameObject.FindObjectOfType<WinManager>();
-        _destPosition = swordRestPosition;
-        _destRotation = swordRestRotation;
+        
+        destination = restTransform;
 
         _swordSpeed = recoverSpeed;
 
@@ -134,18 +132,18 @@ public class SwordScript : MonoBehaviour
 
     void charge()
     {
-        _destPosition = swordChargingPosition;
-        _destRotation = swordChargingRotation;
+        destination = chargeTransform;
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
+        backFender.enabled = false;
     }
 
     void recover()
     {
-        _destPosition = swordRestPosition;
-        _destRotation = swordRestRotation;
+        destination = restTransform;
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
+        backFender.enabled = false;
     }
 
     //we call swing every frame while we're swinging
@@ -154,13 +152,12 @@ public class SwordScript : MonoBehaviour
     {
         if (front)
         {
-            _destPosition = swordFrontSwingFinalPosition;
-            _destRotation = swordFrontSwingFinalRotation;
+            destination = frontSwingTransform;
         }
         else
         {
-            _destPosition = swordBackSwingFinalPosition;
-            _destRotation = swordBackSwingFinalRotation;
+            destination = backSwingTransform;
+            backFender.enabled = true; 
         }        
         _swordSpeed = swingSpeed;
         swordCollider.enabled = true;
@@ -168,8 +165,9 @@ public class SwordScript : MonoBehaviour
 
     void moveSword()
     {
-        swordTransform.localPosition = Vector3.Slerp(_destPosition, swordTransform.localPosition, _swordSpeed);
-        swordTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(_destRotation), swordTransform.localRotation, _swordSpeed);
+        swordTransform.localPosition = Vector3.Slerp(swordTransform.localPosition, destination.localPosition, _swordSpeed);
+        swordTransform.localRotation = Quaternion.Slerp(swordTransform.localRotation, destination.localRotation, _swordSpeed);
+        swordTransform.localScale = Vector3.Slerp(swordTransform.localScale, destination.localScale, _swordSpeed);
     }
 
     public void getNetted()

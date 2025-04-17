@@ -19,7 +19,7 @@ public class ManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+               
         if (PlayerPrefs.HasKey("SFXVol"))
         {
             _sfxVol = PlayerPrefs.GetFloat("SFXVol") / 5f;
