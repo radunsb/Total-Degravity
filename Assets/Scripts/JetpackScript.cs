@@ -13,21 +13,27 @@ public class JetpackScript : MonoBehaviour
     Vector2 _horizontalThrusting;
     float adaptiveThrustMultiplier = 1f;
     float[] velocityThresholds = { 2f, 5f, 10f };
+    float curVelo;
 
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody>();
         thrustForce = thrustForce / 50f;
+        curVelo = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        float lastVelo = curVelo;
         thrustForce = 0.1f;
-        float curVelo = _rbody.velocity.magnitude;
-        print(curVelo);
-        if(curVelo < velocityThresholds[0])
+        curVelo = _rbody.velocity.magnitude;
+        if(curVelo < lastVelo)
+        {
+            adaptiveThrustMultiplier = 3.0f;
+        }
+        else if(curVelo < velocityThresholds[0])
         {
             adaptiveThrustMultiplier = 3.0f;
         }

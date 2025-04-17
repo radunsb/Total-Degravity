@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HumanTutorial.unity
     guid: 453599c26f4f9324fb602ab05f4df36c
+  - enabled: 1
+    path: Assets/Scenes/MonkeyTutorial.unity
+    guid: 855d342d3f72deb47a1eec708d780c64
   m_configObjects: {}
