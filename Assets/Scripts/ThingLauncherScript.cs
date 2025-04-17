@@ -13,7 +13,7 @@ public class ThingLauncherScript : MonoBehaviour
     public float launchRotation;
 
     public float launchCooldown;
-    float _lastLaunchTime = int.MinValue;
+    public float _lastLaunchTime = int.MinValue;
 
     public float launchDelay;
 

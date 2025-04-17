@@ -13,10 +13,14 @@ public class HumanTutorialScript : MonoBehaviour
     public GameObject[] tutorialMessages;
     public Boolean[] showBox;
     public GameObject textBox;
+    public GameObject _grabCube;
+    public GameObject _player;
+    public GameObject _thingLauncher;
+    ThingLauncherScript _tls;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _tls = _thingLauncher.GetComponent<ThingLauncherScript>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,14 @@ public class HumanTutorialScript : MonoBehaviour
         {
             textBox.SetActive(false);
             Time.timeScale = 1;
+        }
+        if (_grabCube.transform.parent == _player.transform && tutorialOn == 12)
+        {
+            setTutorialOn(13);
+        }
+        if(tutorialOn == 14 && Time.time - _tls._lastLaunchTime > 2 && Time.time - _tls._lastLaunchTime < 4)
+        {
+            setTutorialOn(15);
         }
     }
 
@@ -47,13 +59,16 @@ public class HumanTutorialScript : MonoBehaviour
 
     public void OnAdvance(InputValue value)
     {
-        tutorialOn++;
-        if (showBox[tutorialOn] == false)
+        if (showBox[tutorialOn] == true)
         {
-            textBox.SetActive(false);
+            tutorialOn++;
+            if (showBox[tutorialOn] == false)
+            {
+                textBox.SetActive(false);
+            }
+            tutorialMessages[tutorialOn - 1].SetActive(false);
+            tutorialMessages[tutorialOn].SetActive(true);
         }
-        tutorialMessages[tutorialOn - 1].SetActive(false);
-        tutorialMessages[tutorialOn].SetActive(true);
     }
 
     public void setTutorialOn(int newTutorialOn)
