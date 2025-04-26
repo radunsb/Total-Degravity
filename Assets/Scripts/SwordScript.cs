@@ -19,6 +19,7 @@ public class SwordScript : MonoBehaviour
     public Transform swordTransform;
     public Collider swordCollider;
     public Collider backFender; 
+    public Collider frontFender;
 
     public Transform restTransform;
 
@@ -52,7 +53,10 @@ public class SwordScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
+        if (GameObject.FindObjectOfType<ManagerScript>())
+        {
+            _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
+        }
         _winManager = GameObject.FindObjectOfType<WinManager>();
         
         destination = restTransform;
@@ -136,6 +140,7 @@ public class SwordScript : MonoBehaviour
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
+        frontFender.enabled = false;
     }
 
     void recover()
@@ -144,6 +149,7 @@ public class SwordScript : MonoBehaviour
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
+        frontFender.enabled = false;
     }
 
     //we call swing every frame while we're swinging
@@ -153,6 +159,7 @@ public class SwordScript : MonoBehaviour
         if (front)
         {
             destination = frontSwingTransform;
+            frontFender.enabled = true;
         }
         else
         {

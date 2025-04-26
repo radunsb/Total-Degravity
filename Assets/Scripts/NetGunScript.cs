@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class NetGunScript : MonoBehaviour
 {
@@ -14,18 +15,26 @@ public class NetGunScript : MonoBehaviour
     public float velocityInfluence;
     float shootTime;
 
+    Slider netProgressBar;
+
     // Start is called before the first frame update
     void Start()
     {
         _netProjectilePool = new ObjectPool(_netProjectilePrefab, true, 5);
         _humanRigidbody = GetComponent<Rigidbody>();
-        shootTime = 5f;
+        shootTime = 3f;
+        netProgressBar = GameObject.FindGameObjectWithTag("NetProgressBar").GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
         shootTime += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        netProgressBar.value = Mathf.Min(shootTime / 5, 1);
     }
 
     public void OnShoot(InputValue value)
