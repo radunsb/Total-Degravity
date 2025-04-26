@@ -8,6 +8,7 @@ public class TutorialTriggerScript : MonoBehaviour
     public Boolean human;
     public int tutorialNum;
     HumanTutorialScript _hts;
+    Monkey
     // Start is called before the first frame update
     void Start()
     {
