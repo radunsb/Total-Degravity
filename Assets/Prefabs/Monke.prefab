@@ -442,7 +442,7 @@ Canvas:
   m_GameObject: {fileID: 6034294787878647190}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1562114941723007953}
   m_PlaneDistance: 2
   m_PixelPerfect: 0
@@ -705,14 +705,12 @@ MonoBehaviour:
   maxSwingTime: 0.5
   swordTransform: {fileID: 4445872104405124277}
   swordCollider: {fileID: 7945041708995844678}
-  swordRestPosition: {x: -0.85, y: -1.45, z: 1.05}
-  swordRestRotation: {x: -45, y: -35, z: -5}
-  swordChargingPosition: {x: -0.86, y: 0.12, z: 1.91}
-  swordChargingRotation: {x: -59.4, y: -127.1, z: 100}
-  swordFrontSwingFinalPosition: {x: -0.84, y: -2.18, z: 2.8}
-  swordFrontSwingFinalRotation: {x: -16.8, y: -25, z: -23.6}
-  swordBackSwingFinalPosition: {x: -0.85, y: 0.45, z: -2.6}
-  swordBackSwingFinalRotation: {x: -10.84, y: -155.6, z: -216.2}
+  backFender: {fileID: 0}
+  restTransform: {fileID: 0}
+  chargeTransform: {fileID: 0}
+  frontSwingTransform: {fileID: 0}
+  backSwingTransform: {fileID: 0}
+  _basicStrike: {fileID: 0}
 --- !u!54 &7501979103286301505
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -782,6 +780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05017f29c71c504297b7f2933a8f893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reticule: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!136 &5228030588605384275
 CapsuleCollider:
   m_ObjectHideFlags: 0
