@@ -20,7 +20,7 @@ public class ThingLauncherScript : MonoBehaviour
     public Material normalMat;
     public Material chargeMat;
 
-    public MeshRenderer meh;
+    public MeshRenderer[] mehses;
 
     public AudioSource _as;
     public AudioClip _whoosh;
@@ -37,9 +37,11 @@ public class ThingLauncherScript : MonoBehaviour
 
     private IEnumerator launchThing()
     {
-        meh.material = chargeMat;
+
+        updateMaterials(chargeMat);
         yield return new WaitForSeconds(launchDelay);
-        meh.material = normalMat;
+        updateMaterials(normalMat);
+        
 
         int thingIndex = (int)(Random.value * thingsToLaunch.Length);
 
@@ -55,5 +57,13 @@ public class ThingLauncherScript : MonoBehaviour
 
         Vector3 launchRotation = new Vector3(Random.value, Random.value, Random.value).normalized;
         rb.angularVelocity = launchRotation * launchSpeed;
+    }
+
+    private void updateMaterials(Material mat)
+    {
+        foreach (MeshRenderer meh in mehses)
+        {
+            meh.material = mat;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class SwordScript : MonoBehaviour
     public Transform swordTransform;
     public Collider swordCollider;
     public Collider backFender; 
+    public Collider frontFender;
 
     public Transform restTransform;
 
@@ -136,6 +137,7 @@ public class SwordScript : MonoBehaviour
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
+        frontFender.enabled = false;
     }
 
     void recover()
@@ -144,6 +146,7 @@ public class SwordScript : MonoBehaviour
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
+        frontFender.enabled = false;
     }
 
     //we call swing every frame while we're swinging
@@ -153,6 +156,7 @@ public class SwordScript : MonoBehaviour
         if (front)
         {
             destination = frontSwingTransform;
+            frontFender.enabled = true;
         }
         else
         {
