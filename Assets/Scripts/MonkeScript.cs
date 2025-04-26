@@ -8,8 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 public class MonkeScript : MonoBehaviour
 {
     Rigidbody _rb;
-    int _bananaCount = 3;
-    public GameObject[] _bananaTexts;
+    int bananaCount = 3;
     WinManager _winManager;
     SwordScript _swordScript;
 
@@ -22,15 +21,21 @@ public class MonkeScript : MonoBehaviour
 
     public GameObject bananaPrefab;
     public float bananaForce;
+    GameObject[] bananaImages;
 
     // Start is called before the first frame update
     void Start()
     {
+        bananaImages = new GameObject[3];
         _rb = GetComponent<Rigidbody>();
         _swordScript = GetComponent<SwordScript>();
         StartCoroutine(returnBananas());
-        _bananaTexts = GameObject.FindGameObjectsWithTag("BananaText");
-        _winManager = GameObject.FindObjectOfType<WinManager>();
+        GameObject bananaImageParent = GameObject.FindGameObjectWithTag("BananaImage");
+        for (int i = 0; i < bananaImageParent.transform.childCount; i++)
+        {
+            bananaImages[i] = bananaImageParent.transform.GetChild(i).gameObject;
+        }
+        _winManager = GameObject.FindAnyObjectByType<WinManager>();
     }
 
     private void Update()
@@ -66,16 +71,17 @@ public class MonkeScript : MonoBehaviour
 
     private void OnBanana(InputValue value)
     {
-        if (_bananaCount > 0 && _winManager._gameStarted)
+        if (bananaCount > 0 && _winManager._gameStarted)
         {
             _rb.AddForce(-1 * transform.forward * bananaForce, ForceMode.Impulse);
-            _bananaCount--;
+            bananaCount--;
 
             launchNewBanana();
 
-            foreach (GameObject text in _bananaTexts)
+            for(int i = 0; i < 3; i++)
             {
-                text.GetComponent<UnityEngine.UI.Text>().text = "Current Bananas: " + _bananaCount;
+                //activate number of banana images = to current count
+                bananaImages[i].gameObject.SetActive(bananaCount > i);
             }
         }
     }
@@ -84,12 +90,12 @@ public class MonkeScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(6);
-            if(_bananaCount < 3)
+            if(bananaCount < 3)
             {
-                _bananaCount++;
-                foreach(GameObject text in _bananaTexts)
+                bananaCount++;
+                for (int i = 0; i < 3; i++)
                 {
-                    text.GetComponent<UnityEngine.UI.Text>().text = "Current Bananas: " + _bananaCount;
+                    bananaImages[i].gameObject.SetActive(bananaCount > i);
                 }
             }
         }

@@ -12,6 +12,7 @@ TagManager:
   - NetProjectile
   - Grabbable
   - HumanCamera
+  - BananaImage
   layers:
   - Default
   - TransparentFX
