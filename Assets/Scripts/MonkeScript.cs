@@ -71,7 +71,7 @@ public class MonkeScript : MonoBehaviour
 
     private void OnBanana(InputValue value)
     {
-        if (bananaCount > 0 && _winManager._gameStarted)
+        if (bananaCount > 0 && (!_winManager || _winManager._gameStarted))
         {
             _rb.AddForce(-1 * transform.forward * bananaForce, ForceMode.Impulse);
             bananaCount--;
