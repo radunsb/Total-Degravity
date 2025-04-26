@@ -9,6 +9,7 @@ public class TutorialTriggerScript : MonoBehaviour
     public int tutorialNum;
     HumanTutorialScript _hts;
     MonkeyTutorialScript _mts;
+
     // Start is called before the first frame update
     void Start()
     {
