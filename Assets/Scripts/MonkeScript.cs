@@ -127,4 +127,9 @@ public class MonkeScript : MonoBehaviour
         brb.AddForce(bananaForce * transform.forward, ForceMode.Impulse);
         brb.AddTorque(3 * new Vector3(Random.value, Random.value, Random.value));
     }
+
+    public int getBananaCount()
+    {
+        return bananaCount;
+    }
 }

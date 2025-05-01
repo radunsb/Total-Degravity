@@ -60,7 +60,7 @@ public class ManagerScript : MonoBehaviour
         }
 
         //Uncomment the line below for single player testing
-        //onSecondPlayerJoin();
+        onSecondPlayerJoin();
     }
 
     public void onSecondPlayerJoin()

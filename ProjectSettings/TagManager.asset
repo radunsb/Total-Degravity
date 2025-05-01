@@ -14,6 +14,9 @@ TagManager:
   - HumanCamera
   - BananaImage
   - NetProgressBar
+  - Human
+  - MonkeHintText
+  - MonkeHint
   layers:
   - Default
   - TransparentFX
