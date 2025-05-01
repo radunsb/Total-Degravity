@@ -58,6 +58,9 @@ public class ManagerScript : MonoBehaviour
             p1Text.gameObject.SetActive(false);
             StartCoroutine(waitToSayPlayerIn());
         }
+
+        //Uncomment the line below for single player testing
+        //onSecondPlayerJoin();
     }
 
     public void onSecondPlayerJoin()
