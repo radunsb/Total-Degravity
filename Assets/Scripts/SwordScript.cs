@@ -53,7 +53,10 @@ public class SwordScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
+        if (GameObject.FindObjectOfType<ManagerScript>())
+        {
+            _as = GameObject.FindObjectOfType<ManagerScript>()._sfxSource;
+        }
         _winManager = GameObject.FindObjectOfType<WinManager>();
         
         destination = restTransform;
@@ -109,7 +112,7 @@ public class SwordScript : MonoBehaviour
 
     void OnSwordFront(InputValue value)
     {
-        if (_winManager._gameStarted)
+        if (!_winManager || _winManager._gameStarted)
         {
             if (!_isNetted)
             {
@@ -121,7 +124,7 @@ public class SwordScript : MonoBehaviour
 
     void OnSwordBack(InputValue value)
     {
-        if (_winManager._gameStarted)
+        if (!_winManager || _winManager._gameStarted)
         {
             if (!_isNetted)
             {

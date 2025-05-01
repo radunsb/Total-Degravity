@@ -24,14 +24,20 @@ public class NetScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.SetActive(false);
+        if (!collision.gameObject.CompareTag("Human"))
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.SetActive(false);
+        if (!other.gameObject.CompareTag("Human"))
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameObject.SetActive(false);
+        }
     }
 
     IEnumerator Deactivate()

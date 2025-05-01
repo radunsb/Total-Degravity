@@ -359,7 +359,7 @@ Transform:
   m_GameObject: {fileID: 1008566337565080201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -46.689884}
+  m_LocalPosition: {x: 47, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -716,7 +716,7 @@ MonoBehaviour:
   swordTransform: {fileID: 9131079433062596648}
   swordCollider: {fileID: 772203161136742937}
   backFender: {fileID: 5805412444453707132}
-  frontFender: {fileID: 0}
+  frontFender: {fileID: 9187348443045057756}
   restTransform: {fileID: 3863131484439286451}
   chargeTransform: {fileID: 7630867692796519806}
   frontSwingTransform: {fileID: 5889249597433509952}
