@@ -13,6 +13,7 @@ public class ArtificialGravity : MonoBehaviour {
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        centerOfGravity = GameObject.FindWithTag(centerTag).transform; 
     }
 
     private void FixedUpdate()
