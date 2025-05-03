@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class ArtificialGravity : MonoBehaviour {
+    Transform centerOfGravity;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string centerTag;
+    public float gravityForce;
 
-    // Update is called once per frame
-    void Update()
+    Rigidbody _rb;
+    private void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        
+        Vector3 forceDirection = (centerOfGravity.position - transform.position).normalized;
+
+        _rb.AddForce(forceDirection * gravityForce);
     }
 }

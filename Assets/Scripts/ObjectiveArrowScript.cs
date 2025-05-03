@@ -15,6 +15,7 @@ public class ObjectiveArrowScript : MonoBehaviour
 
     public float arrowSpeed;
 
+    public int screenID;
 
     //right, bottom, left, top
     Vector4 edgePositions;
@@ -33,11 +34,22 @@ public class ObjectiveArrowScript : MonoBehaviour
         screenWidth = _cam.pixelWidth;
         screenHeight = _cam.pixelHeight;
 
-        //right, bottom, left, top
-        edgePositions.w = screenWidth - arrowTrans.rect.width/2;
-        edgePositions.x = arrowTrans.rect.height * 1.5f;
-        edgePositions.y = arrowTrans.rect.width/2;
-        edgePositions.z = screenHeight - (arrowTrans.rect.height * 1.5f);
+
+        if (screenID == 0)
+        {
+            //right, bottom, left, top
+            edgePositions.w = screenWidth - arrowTrans.rect.width / 2;
+            edgePositions.x = arrowTrans.rect.height * 1.5f;
+            edgePositions.y = arrowTrans.rect.width / 2;
+            edgePositions.z = screenHeight - (arrowTrans.rect.height * 1.5f);
+        }
+        else
+        {
+            edgePositions.w = 2 * screenWidth - arrowTrans.rect.width / 2;
+            edgePositions.x = arrowTrans.rect.height * 1.5f;
+            edgePositions.y = screenWidth + arrowTrans.rect.width / 2;
+            edgePositions.z = screenHeight - (arrowTrans.rect.height * 1.5f);
+        }
 
         Debug.Log(edgePositions);
     }
