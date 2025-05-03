@@ -13,7 +13,7 @@ public class ArtificialGravity : MonoBehaviour {
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        if (GameObject.FindGameObjectsWithTag(centerTag).Length >= 0)
+        if (GameObject.FindGameObjectsWithTag(centerTag).Length > 0)
         {
             centerOfGravity = GameObject.FindWithTag(centerTag).transform;
         }
