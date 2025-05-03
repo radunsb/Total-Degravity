@@ -17,6 +17,9 @@ TagManager:
   - Human
   - MonkeHintText
   - MonkeHint
+  - MonkeArrow
+  - AstronautArrow
+  - Monke
   layers:
   - Default
   - TransparentFX
