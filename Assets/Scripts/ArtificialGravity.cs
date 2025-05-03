@@ -13,13 +13,18 @@ public class ArtificialGravity : MonoBehaviour {
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        centerOfGravity = GameObject.FindWithTag(centerTag).transform; 
+        if (GameObject.FindGameObjectsWithTag(centerTag).Length >= 0)
+        {
+            centerOfGravity = GameObject.FindWithTag(centerTag).transform;
+        }
     }
 
     private void FixedUpdate()
     {
-        Vector3 forceDirection = (centerOfGravity.position - transform.position).normalized;
-
-        _rb.AddForce(forceDirection * gravityForce);
+        if (centerOfGravity != null)
+        {
+            Vector3 forceDirection = (centerOfGravity.position - transform.position).normalized;
+            _rb.AddForce(forceDirection * gravityForce);
+        }
     }
 }

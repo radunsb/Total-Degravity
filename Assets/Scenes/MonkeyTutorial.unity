@@ -852,7 +852,9 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.width
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3903743828548774956, guid: 8b72a6b157288b147b3c637be423e7cc, type: 3}
+    - {fileID: 2358064292168484170, guid: 8b72a6b157288b147b3c637be423e7cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
