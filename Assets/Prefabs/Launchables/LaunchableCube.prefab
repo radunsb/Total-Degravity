@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8546673139090689487}
   - component: {fileID: 6174034138564367653}
   - component: {fileID: 5007559940871631273}
+  - component: {fileID: -9044822090702914051}
   m_Layer: 30
   m_Name: LaunchableCube
   m_TagString: Grabbable
@@ -151,3 +152,16 @@ MonoBehaviour:
   maxRotation: 20
   driftRotation: 1
   slowdownRatio: 0.95
+--- !u!114 &-9044822090702914051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846280554496251661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa1ca88fbc596249ab34909cbb771f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDistance: 0

@@ -88,6 +88,11 @@ public class ObjectGrabScript : MonoBehaviour
 
             heldObject = grabbedObject;
             heldObject.transform.parent = holdArea;
+
+            if (!grabbedObject.CompareTag("Player"))
+            {
+                heldObject.transform.position += grabbedObject.GetComponent<GrabbableObjectScript>().additionalHoldDistance;
+            }
         }
     }
 
