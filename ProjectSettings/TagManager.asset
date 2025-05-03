@@ -21,6 +21,7 @@ TagManager:
   - AstronautArrow
   - Monke
   - MonkeInternal
+  - SFXsource
   layers:
   - Default
   - TransparentFX

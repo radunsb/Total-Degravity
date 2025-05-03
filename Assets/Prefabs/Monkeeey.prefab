@@ -664,6 +664,7 @@ GameObject:
   - component: {fileID: 5959197838831983792}
   - component: {fileID: 8592741156866451520}
   - component: {fileID: 3903743828548774956}
+  - component: {fileID: 8287053581480010284}
   m_Layer: 0
   m_Name: Monke
   m_TagString: Player
@@ -867,6 +868,20 @@ MonoBehaviour:
   ms: {fileID: 8592741156866451520}
   fastThresholdSpeed: 5
   slowWarningTime: 4
+--- !u!114 &8287053581480010284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925695270420166504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d790f7c76b233f4a8399d4515e0d942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerTag: Reactor
+  gravityForce: 1
 --- !u!1 &1940438954246539429
 GameObject:
   m_ObjectHideFlags: 0

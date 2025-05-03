@@ -140,6 +140,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 127c34bf71b2a204f8f9f287a4b1134e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8408754335826842245}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 127c34bf71b2a204f8f9f287a4b1134e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 123919478743787832}
   m_SourcePrefab: {fileID: 100100000, guid: 127c34bf71b2a204f8f9f287a4b1134e, type: 3}
 --- !u!4 &4818087636417746970 stripped
 Transform:
@@ -195,3 +198,17 @@ MonoBehaviour:
   maxRotation: 20
   driftRotation: 1
   slowdownRatio: 0.95
+--- !u!114 &123919478743787832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302594390803464864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d790f7c76b233f4a8399d4515e0d942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerTag: Reactor
+  gravityForce: 0.5

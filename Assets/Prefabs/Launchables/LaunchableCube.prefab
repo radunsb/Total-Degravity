@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6174034138564367653}
   - component: {fileID: 5007559940871631273}
   - component: {fileID: -9044822090702914051}
+  - component: {fileID: 6495656779443846942}
   m_Layer: 30
   m_Name: LaunchableCube
   m_TagString: Grabbable
@@ -164,4 +165,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa1ca88fbc596249ab34909cbb771f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDistance: 0
+  additionalHoldDistance: {x: 0, y: 0, z: 0}
+--- !u!114 &6495656779443846942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846280554496251661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d790f7c76b233f4a8399d4515e0d942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerTag: Reactor
+  gravityForce: 0.5
