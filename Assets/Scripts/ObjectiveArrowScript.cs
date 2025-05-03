@@ -65,7 +65,11 @@ public class ObjectiveArrowScript : MonoBehaviour
         }
 
         Vector3 objectivePosition = _cam.WorldToScreenPoint(objective.position);
-
+        if(screenID == 1)
+        {
+            objectivePosition = new Vector3(objectivePosition.x - screenWidth, objectivePosition.y, objectivePosition.z);
+            print(objectivePosition);
+        }
         bool offRight = objectivePosition.x > screenWidth;
         bool offLeft = objectivePosition.x < 0;
         bool offBottom = objectivePosition.y < 0;
@@ -73,8 +77,7 @@ public class ObjectiveArrowScript : MonoBehaviour
 
         bool onScreen = !offRight && !offLeft && !offTop && !offBottom && objectivePosition.z > 0;
 
-        Debug.LogFormat("ScreenWidth: {0}\nScreenHeight: {1}\nobjectiveScreenPoint: {2}", screenWidth, screenHeight, objectivePosition);
-        Debug.LogFormat("offRight: {0}\nOffLEft: {1}\nOffBottom: {2}\nOffTop: {3}\nOnScreen: {4}", offRight, offLeft, offBottom, offTop, onScreen);
+
 
         arrowTrans.gameObject.SetActive(!onScreen);
 
@@ -95,7 +98,7 @@ public class ObjectiveArrowScript : MonoBehaviour
             //edgePositions stores (rightEdge, bottomEdge, leftEdge, topEdge)
             if (offRight) xTarget = edgePositions.w;
             else if (offLeft) xTarget = edgePositions.y;
-            else xTarget = screenWidth / 2;
+            else xTarget = screenID*screenWidth + screenWidth / 2;
 
             if (offTop) yTarget = edgePositions.z;
             else if (offBottom) yTarget = edgePositions.x;

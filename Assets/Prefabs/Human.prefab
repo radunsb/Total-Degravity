@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowTag: AstronautArrow
-  objectiveTag: Monke
+  objectiveTag: MonkeInternal
   arrowSpeed: 0.1
   screenID: 1
 --- !u!1 &540372452838438162

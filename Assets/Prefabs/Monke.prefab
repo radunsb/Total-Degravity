@@ -706,6 +706,7 @@ MonoBehaviour:
   swordTransform: {fileID: 4445872104405124277}
   swordCollider: {fileID: 7945041708995844678}
   backFender: {fileID: 0}
+  frontFender: {fileID: 0}
   restTransform: {fileID: 0}
   chargeTransform: {fileID: 0}
   frontSwingTransform: {fileID: 0}
@@ -834,7 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e93f8268001204684dee4b9ddd0706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bananaTexts: []
   _netText: {fileID: 4670739910644204091}
   _netImage: {fileID: 7516929944494954004}
   _sword: {fileID: 6388385331654345291}
@@ -903,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 08fb263a44cca3f4c9ee2f4643d72354, type: 3}
       propertyPath: m_Name
       value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08fb263a44cca3f4c9ee2f4643d72354, type: 3}
+      propertyPath: m_TagString
+      value: MonkeInternal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
