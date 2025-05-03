@@ -12627,7 +12627,7 @@ MonoBehaviour:
   - {fileID: 7829960815477106399}
   - {fileID: 3012380038789402987}
   _as: {fileID: 0}
-  _whoosh: {fileID: 0}
+  _whoosh: {fileID: 8300000, guid: fe6abe175821f0743929d135d0d1aaa1, type: 3}
 --- !u!65 &7499911023199746454
 BoxCollider:
   m_ObjectHideFlags: 0

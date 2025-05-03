@@ -22,16 +22,22 @@ public class ThingLauncherScript : MonoBehaviour
 
     public MeshRenderer[] mehses;
 
-    public AudioSource _as;
+    AudioSource _as;
     public AudioClip _whoosh;
+
+    private void Start()
+    {
+        _as = GameObject.FindWithTag("SFXsource").GetComponent<AudioSource>();
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
         if (Time.time > _lastLaunchTime + launchCooldown)
         {
             _lastLaunchTime = Time.time;
-            _as.PlayOneShot(_whoosh);
             StartCoroutine(launchThing());
+            _as.PlayOneShot(_whoosh);
         }
     }
 
