@@ -16,8 +16,10 @@ public class TitleScript : MonoBehaviour
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
     float volume;
+    public Text[] titleTexts;
     private void Start()
     {
+        StartCoroutine(titleShift());
         GameObject[] _musicSources = GameObject.FindGameObjectsWithTag("MusicSource");
         if(_musicSources.Length > 1)
         {
@@ -39,6 +41,29 @@ public class TitleScript : MonoBehaviour
             volume = 1;
         }
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    IEnumerator titleShift()
+    {
+        while (true)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                foreach (Text title in titleTexts)
+                {
+                    title.fontSize += 1;                   
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                foreach (Text title in titleTexts)
+                {
+                    title.fontSize -= 1;                   
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
     }
     public void OnQuit()
     {

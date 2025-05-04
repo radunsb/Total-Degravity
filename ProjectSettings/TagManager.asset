@@ -58,6 +58,12 @@ TagManager:
   - Launchee
   - Launcher
   m_SortingLayers:
+  - name: Behind UI
+    uniqueID: 3016926571
+    locked: 0
+  - name: UI
+    uniqueID: 3349211211
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
