@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class JetpackScript : MonoBehaviour
 {
+    public ParticleSystem[] jetpackParticles;
+    bool particlesPlaying;
+
     public float thrustForce = 1f;
     Rigidbody _rbody;
 
@@ -21,6 +24,7 @@ public class JetpackScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody>();
         thrustForce = thrustForce / 50f;
         curVelo = 0;
+        particlesPlaying = false;
     }
 
     // Update is called once per frame
@@ -74,6 +78,33 @@ public class JetpackScript : MonoBehaviour
         {
             _rbody.AddForce(-1 * _rbody.transform.right * thrustForce, ForceMode.Impulse);
         }
+
+        if (_thrusting || _backwardsThrusting || _horizontalThrusting.x != 0 || _horizontalThrusting.y != 0)
+        {
+            if (!particlesPlaying) TurnOnParticles();
+        }
+        else
+        {
+            if (particlesPlaying) TurnOffParticles();
+        }
+    }
+
+    void TurnOnParticles()
+    {
+        for (int i = 0; i < jetpackParticles.Length; i++)
+        {
+            jetpackParticles[i].Play();
+        }
+        particlesPlaying = true;
+    }
+
+    void TurnOffParticles()
+    {
+        for (int i = 0; i < jetpackParticles.Length; i++)
+        {
+            jetpackParticles[i].Stop();
+        }
+        particlesPlaying = false;
     }
 
     void OnJetpack(InputValue value)
