@@ -724,7 +724,9 @@ MonoBehaviour:
   chargeTransform: {fileID: 7630867692796519806}
   frontSwingTransform: {fileID: 5889249597433509952}
   backSwingTransform: {fileID: 4301690103408508570}
+  _as: {fileID: 0}
   _basicStrike: {fileID: 8300000, guid: 84e1d30a0aa29c64fb7b6cddb3e97ffd, type: 3}
+  _scream: {fileID: 8300000, guid: 49f73635afa3c9e4095cc39950b436bf, type: 3}
 --- !u!54 &930413090412546846
 Rigidbody:
   m_ObjectHideFlags: 0
