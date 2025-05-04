@@ -9,6 +9,7 @@ public class TutorialTriggerScript : MonoBehaviour
     public int tutorialNum;
     HumanTutorialScript _hts;
     MonkeyTutorialScript _mts;
+    public GameObject nathan;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class TutorialTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Human"))
         {
             if (human)
             {
@@ -40,6 +41,10 @@ public class TutorialTriggerScript : MonoBehaviour
             }
             else
             {
+                if(tutorialNum == 22)
+                {
+                    nathan.SetActive(true);
+                }
                 _mts.setTutorialOn(tutorialNum);
                 Destroy(gameObject);
             }
