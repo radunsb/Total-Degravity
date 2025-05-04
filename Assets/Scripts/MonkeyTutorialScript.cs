@@ -12,6 +12,8 @@ public class MonkeyTutorialScript : MonoBehaviour
     public GameObject textBox;
     AudioSource _musicSource;
     AudioSource _SFXSource;
+    bool paused;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,5 +66,21 @@ public class MonkeyTutorialScript : MonoBehaviour
         }
         tutorialOn = newTutorialOn;
         print(tutorialOn);
+    }
+
+    public void doPause()
+    {
+        if (paused)
+        {
+            pauseMenu.SetActive(false);
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            paused = true;
+            Time.timeScale = 0;
+        }
     }
 }

@@ -53,7 +53,7 @@ public class TitleScript : MonoBehaviour
                 {
                     title.fontSize += 1;                   
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(.1f);
             }
             for (int i = 0; i < 10; i++)
             {
@@ -61,7 +61,7 @@ public class TitleScript : MonoBehaviour
                 {
                     title.fontSize -= 1;                   
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(.1f);
             }
         }
     }

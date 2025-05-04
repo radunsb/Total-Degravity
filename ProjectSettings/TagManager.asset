@@ -24,6 +24,7 @@ TagManager:
   - SFXsource
   - Nathan
   - MusicSource
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

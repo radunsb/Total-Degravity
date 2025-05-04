@@ -16,6 +16,8 @@ public class ManagerScript : MonoBehaviour
     float _sfxVol;
     public AudioSource _sfxSource;
     public AudioSource _musicSource;
+    bool paused = false;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class ManagerScript : MonoBehaviour
         _musicSource.volume = _musicVol;
         _sfxSource.volume = _sfxVol;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -73,5 +76,21 @@ public class ManagerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         playerOneIn = true;
+    }
+
+    public void doPause()
+    {
+        if (paused)
+        {
+            pauseMenu.SetActive(false);
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            paused = true;
+            Time.timeScale = 0;
+        }
     }
 }

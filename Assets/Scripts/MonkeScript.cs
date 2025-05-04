@@ -24,9 +24,17 @@ public class MonkeScript : MonoBehaviour
     public float bananaForce;
     GameObject[] bananaImages;
 
+    ManagerScript _ms;
+    MonkeyTutorialScript _mts;
+
     // Start is called before the first frame update
     void Start()
     {
+        _ms = GameObject.FindObjectOfType<ManagerScript>();
+        if(_ms != null)
+        {
+            _mts = GameObject.FindObjectOfType<MonkeyTutorialScript>();
+        }
         bananaImages = new GameObject[3];
         _rb = GetComponent<Rigidbody>();
         _swordScript = GetComponent<SwordScript>();
@@ -67,6 +75,18 @@ public class MonkeScript : MonoBehaviour
 
                 _nettedTime -= Time.deltaTime;
             }
+        }
+    }
+
+    void OnPause(InputValue value)
+    {
+        if (_ms != null)
+        {
+            _ms.doPause();
+        }
+        else if(_mts != null)
+        {
+            _mts.doPause();
         }
     }
 
