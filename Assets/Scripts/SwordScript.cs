@@ -49,6 +49,7 @@ public class SwordScript : MonoBehaviour
 
     public AudioSource _as;
     public AudioClip _basicStrike;
+    public AudioClip _scream;
 
     // Start is called before the first frame update
     void Start()
@@ -132,6 +133,11 @@ public class SwordScript : MonoBehaviour
                 _front = false;
             }
         }
+    }
+
+    void OnScream(InputValue value)
+    {
+        _as.PlayOneShot(_scream);
     }
 
     void charge()

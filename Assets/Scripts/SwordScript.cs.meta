@@ -3,7 +3,18 @@ guid: f4666c52178aed2488d5211ab385feb2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - swordTransform: {instanceID: 0}
+  - swordCollider: {instanceID: 0}
+  - backFender: {instanceID: 0}
+  - frontFender: {instanceID: 0}
+  - restTransform: {instanceID: 0}
+  - chargeTransform: {instanceID: 0}
+  - frontSwingTransform: {instanceID: 0}
+  - backSwingTransform: {instanceID: 0}
+  - _as: {instanceID: 0}
+  - _basicStrike: {fileID: 8300000, guid: 84e1d30a0aa29c64fb7b6cddb3e97ffd, type: 3}
+  - _scream: {fileID: 8300000, guid: 49f73635afa3c9e4095cc39950b436bf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
