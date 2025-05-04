@@ -65,7 +65,15 @@ public class ReactorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
-        _winManager.MonkeyWin();
+        if (_winManager != null)
+        {
+            _winManager.MonkeyWin();
+        }
+        else
+        {
+            MonkeyTutorialScript _mts = GameObject.FindObjectOfType<MonkeyTutorialScript>();
+            _mts.setTutorialOn(20);
+        }
     }
 
     public float getHealthFraction()

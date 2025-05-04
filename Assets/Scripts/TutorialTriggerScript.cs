@@ -17,6 +17,10 @@ public class TutorialTriggerScript : MonoBehaviour
         {
             _hts = GameObject.FindObjectOfType<HumanTutorialScript>();
         }
+        else
+        {
+            _mts = GameObject.FindObjectOfType<MonkeyTutorialScript>();
+        }
     }
 
     // Update is called once per frame
@@ -27,10 +31,18 @@ public class TutorialTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (human)
+        if (other.CompareTag("Player"))
         {
-            _hts.setTutorialOn(tutorialNum);
-            Destroy(gameObject);
+            if (human)
+            {
+                _hts.setTutorialOn(tutorialNum);
+                Destroy(gameObject);
+            }
+            else
+            {
+                _mts.setTutorialOn(tutorialNum);
+                Destroy(gameObject);
+            }
         }
     }
 }

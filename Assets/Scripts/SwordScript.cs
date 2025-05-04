@@ -47,7 +47,7 @@ public class SwordScript : MonoBehaviour
 
     WinManager _winManager;
 
-    AudioSource _as;
+    public AudioSource _as;
     public AudioClip _basicStrike;
 
     // Start is called before the first frame update
@@ -211,9 +211,12 @@ public class SwordScript : MonoBehaviour
         else if (other.CompareTag("Shield")){
             other.gameObject.GetComponent<ShieldScript>().takeSwordDamage(launchForce.magnitude);
         }
-        else
+        else if(other.CompareTag("Wall"))
         {
-            _as.PlayOneShot(_basicStrike);
+            if (_as)
+            {
+                _as.PlayOneShot(_basicStrike);
+            }
         }
 
         if (otherRB != null)

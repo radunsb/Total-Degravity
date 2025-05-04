@@ -15,6 +15,7 @@ public class MonkeScript : MonoBehaviour
     public GameObject _netText;
     public GameObject _netImage;
     public GameObject _sword;
+    public bool keepInSphere;
 
     float _nettedTime = 3f;
     bool _isNetted = false;
@@ -41,7 +42,7 @@ public class MonkeScript : MonoBehaviour
     private void Update()
     {
 
-        if(transform.position.magnitude > 47)
+        if(keepInSphere && transform.position.magnitude > 47)
         {
             transform.position = transform.position.normalized * 47;
         }

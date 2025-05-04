@@ -52,6 +52,11 @@ public class HelpScript : MonoBehaviour
         SceneManager.LoadScene("HumanTutorial");
     }
 
+    public void OnMonkeyTutorials()
+    {
+        SceneManager.LoadScene("MonkeyTutorial");
+    }
+
     IEnumerator setCurrentScreenOn(int num)
     {
         yield return new WaitForEndOfFrame();

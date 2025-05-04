@@ -851,6 +851,7 @@ MonoBehaviour:
   _netText: {fileID: 2604438250685815396}
   _netImage: {fileID: 910958632391085643}
   _sword: {fileID: 4349638747838716436}
+  keepInSphere: 1
   bananaPrefab: {fileID: 5302594390803464864, guid: 0064ff4b965961b4b8d8aea94da18447, type: 3}
   bananaForce: 5
 --- !u!114 &3903743828548774956

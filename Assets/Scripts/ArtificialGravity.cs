@@ -24,7 +24,10 @@ public class ArtificialGravity : MonoBehaviour {
         if (centerOfGravity != null)
         {
             Vector3 forceDirection = (centerOfGravity.position - transform.position).normalized;
-            _rb.AddForce(forceDirection * gravityForce);
+            if (Vector3.Distance(_rb.position, centerOfGravity.position) < 15f)
+            {
+                _rb.AddForce(forceDirection * gravityForce);
+            }
         }
     }
 }
