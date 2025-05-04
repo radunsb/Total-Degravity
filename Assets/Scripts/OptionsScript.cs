@@ -16,12 +16,14 @@ public class OptionsScript : MonoBehaviour
     public GameObject[] objects;
     int _buttonActive = -1;
     public AudioSource _as;
+    public AudioSource _musicSource;
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
     float volume;
 
     private void Start()
     {
+        _musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
         if (PlayerPrefs.HasKey("SFXVol"))
         {
             volume = PlayerPrefs.GetFloat("SFXVol")/5f;
@@ -41,7 +43,7 @@ public class OptionsScript : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("SFXVol"))
         {
-            SFXVolSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("SFXVol");
+            SFXVolSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("SFXVol");           
         }
 
         if (PlayerPrefs.HasKey("MonkeyFOV"))
@@ -66,10 +68,12 @@ public class OptionsScript : MonoBehaviour
     public void musicVolChanged(float newVol)
     {
         PlayerPrefs.SetFloat("musicVol", newVol);
+        _musicSource.volume = newVol / 5f;
     }
     public void SFXVolChanged(float newVol)
     {
         PlayerPrefs.SetFloat("SFXVol", newVol);
+        volume = newVol / 5f;
     }
     public void MonkeyFOVChanged(float newFOV)
     {

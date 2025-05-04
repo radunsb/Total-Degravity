@@ -11,6 +11,7 @@ public class Nathan : MonoBehaviour
     public AudioSource _as;
     bool startedBS = false;
     public GameObject bs;
+    public AudioClip boof;
 
     private void FixedUpdate()
     {
@@ -29,6 +30,8 @@ public class Nathan : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         bs.SetActive(true);
+        AudioSource _musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
+        _musicSource.PlayOneShot(boof);
         for (int i = 0; i < 20; i++)
         {
             _as.PlayOneShot(_bsSoundEffect);

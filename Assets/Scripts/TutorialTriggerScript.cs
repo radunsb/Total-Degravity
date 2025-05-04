@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TutorialTriggerScript : MonoBehaviour
@@ -44,7 +45,10 @@ public class TutorialTriggerScript : MonoBehaviour
                 if(tutorialNum == 22)
                 {
                     nathan.SetActive(true);
+                    AudioSource _as = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
+                    _as.Stop();
                 }
+                
                 _mts.setTutorialOn(tutorialNum);
                 Destroy(gameObject);
             }

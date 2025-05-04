@@ -10,10 +10,21 @@ public class MonkeyTutorialScript : MonoBehaviour
     public GameObject[] tutorialMessages;
     public Boolean[] showBox;
     public GameObject textBox;
+    AudioSource _musicSource;
+    AudioSource _SFXSource;
     // Start is called before the first frame update
     void Start()
     {
-
+        _musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("musicVol"))
+        {
+            _musicSource.volume = PlayerPrefs.GetFloat("musicVol") / 5f;
+        }
+        _SFXSource = GameObject.FindGameObjectWithTag("SFXsource").GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("SFXVol"))
+        {
+            _SFXSource.volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
+        }
     }
 
     // Update is called once per frame

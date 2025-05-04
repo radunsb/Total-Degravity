@@ -16,8 +16,10 @@ public class HelpScript : MonoBehaviour
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
     float volume;
+    public AudioSource _musicSource;
     private void Start()
     {
+        _musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
         if (PlayerPrefs.HasKey("SFXVol"))
         {
             volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
@@ -49,11 +51,13 @@ public class HelpScript : MonoBehaviour
 
     public void OnHumanTutorials()
     {
+        Destroy(_musicSource.gameObject);
         SceneManager.LoadScene("HumanTutorial");
     }
 
     public void OnMonkeyTutorials()
     {
+        Destroy(_musicSource.gameObject);
         SceneManager.LoadScene("MonkeyTutorial");
     }
 

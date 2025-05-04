@@ -23,6 +23,7 @@ TagManager:
   - MonkeInternal
   - SFXsource
   - Nathan
+  - MusicSource
   layers:
   - Default
   - TransparentFX
