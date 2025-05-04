@@ -12,6 +12,8 @@ public class CameraScript : MonoBehaviour
     bool invertX;
     bool invertY;
     float lookSensitivity;
+    float monkeyFOV;
+    float humanFOV;
 
     public Texture reticule;
     public Camera cam;
@@ -34,6 +36,17 @@ public class CameraScript : MonoBehaviour
         invertX = PlayerPrefs.HasKey("invertX") ? PlayerPrefs.GetInt("invertX") == 1 : false;
         invertX = PlayerPrefs.HasKey("invertY") ? PlayerPrefs.GetInt("invertY") == 1 : false;
         lookSensitivity = PlayerPrefs.HasKey("lookSensitivity") ? PlayerPrefs.GetFloat("lookSensitivity") : 2f;
+        monkeyFOV = PlayerPrefs.HasKey("MonkeyFOV") ? PlayerPrefs.GetFloat("MonkeyFOV") : 60f;
+        humanFOV = PlayerPrefs.HasKey("HumanFOV") ? PlayerPrefs.GetFloat("HumanFOV") : 60f;
+
+        if (cam.tag == "HumanCamera")
+        {
+            cam.fieldOfView = humanFOV;
+        }
+        else
+        {
+            cam.fieldOfView = monkeyFOV;
+        }
     }
 
     // Update is called once per frame
