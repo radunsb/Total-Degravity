@@ -25,6 +25,7 @@ TagManager:
   - Nathan
   - MusicSource
   - PauseMenu
+  - SwordParticles
   layers:
   - Default
   - TransparentFX

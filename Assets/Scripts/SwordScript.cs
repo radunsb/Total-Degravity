@@ -50,6 +50,10 @@ public class SwordScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _basicStrike;
     public AudioClip _scream;
+    public AudioClip _fireWoosh;
+
+    public ParticleSystem chargeParticles;
+    bool wooshing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +82,12 @@ public class SwordScript : MonoBehaviour
                 _swingTime = 0;
 
                 charge();
-
+                if (_chargeTime >= maxChargeTime * .5f && !wooshing)
+                {
+                    wooshing = true;
+                    chargeParticles.gameObject.SetActive(true);
+                    _as.PlayOneShot(_fireWoosh);
+                }
                 if (_chargeTime >= maxChargeTime)
                 {
                     _chargeTime = maxChargeTime;
@@ -91,7 +100,7 @@ public class SwordScript : MonoBehaviour
             else if (_swingTime >= maxSwingTime)
             {
                 _swingTime = 0;
-                _chargeTime = 0;
+                _chargeTime = 0;                
             }
             //if we aren't charging, but we have a charge built up
             //swing the sword
@@ -150,12 +159,14 @@ public class SwordScript : MonoBehaviour
     }
 
     void recover()
-    {
+    {        
         destination = restTransform;
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
         frontFender.enabled = false;
+        chargeParticles.gameObject.SetActive(false);
+        wooshing = false;
     }
 
     //we call swing every frame while we're swinging
