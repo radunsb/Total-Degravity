@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
@@ -14,6 +13,9 @@ public class PauseScript : MonoBehaviour
     public AudioClip _buttonChange;
     public AudioClip _buttonConfirm;
     float volume;
+    public ManagerScript _ms;
+    public MonkeyTutorialScript _mts;
+    public HumanTutorialScript _hts;
 
     void Start()
     {
@@ -26,7 +28,9 @@ public class PauseScript : MonoBehaviour
         {
             volume = 1;
         }
+
     }
+
 
     void OnAdvance(InputValue value)
     {
@@ -61,5 +65,26 @@ public class PauseScript : MonoBehaviour
         }
         EventSystem.current.SetSelectedGameObject(buttons[_buttonActive].gameObject);
         _as.PlayOneShot(_buttonChange, volume);
+    }
+
+    public void OnResume()
+    {
+        if (_ms != null)
+        {
+            _ms.doPause();
+        }
+        else if(_mts != null)
+        {
+            _mts.doPause();
+        }
+        else
+        {
+            _hts.doPause();
+        }
+    }
+
+    public void OnMenu()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }

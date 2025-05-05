@@ -17,10 +17,17 @@ public class JetpackScript : MonoBehaviour
     float adaptiveThrustMultiplier = 1f;
     float[] velocityThresholds = { 2f, 5f, 10f };
     float curVelo;
+    ManagerScript _ms;
+    HumanTutorialScript _hts;
 
     // Start is called before the first frame update
     void Start()
     {
+        _ms = GameObject.FindObjectOfType<ManagerScript>();
+        if(_ms == null)
+        {
+            _hts = GameObject.FindObjectOfType<HumanTutorialScript>();
+        }
         _rbody = GetComponent<Rigidbody>();
         thrustForce = thrustForce / 50f;
         curVelo = 0;
@@ -119,5 +126,17 @@ public class JetpackScript : MonoBehaviour
     void OnRotate(InputValue value)
     {
         _horizontalThrusting = value.Get<Vector2>();
+    }
+
+    void OnPause(InputValue value)
+    {
+        if (_ms != null)
+        {
+            _ms.doPause();
+        }
+        else if (_hts != null)
+        {
+            _hts.doPause();
+        }
     }
 }

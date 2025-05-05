@@ -19,6 +19,8 @@ public class HumanTutorialScript : MonoBehaviour
     ThingLauncherScript _tls;
     AudioSource _musicSource;
     AudioSource _SFXSource;
+    bool paused = false;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class HumanTutorialScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (showBox[tutorialOn] == true)
+        if (showBox[tutorialOn] == true || paused)
         {
             textBox.SetActive(true);
             Time.timeScale = 0;
@@ -91,6 +93,20 @@ public class HumanTutorialScript : MonoBehaviour
             tutorialMessages[i].SetActive(false);
         }
         tutorialOn = newTutorialOn;
-        print(tutorialOn);
+    }
+    public void doPause()
+    {
+        if (paused)
+        {
+            pauseMenu.SetActive(false);
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            paused = true;
+            Time.timeScale = 0;
+        }
     }
 }

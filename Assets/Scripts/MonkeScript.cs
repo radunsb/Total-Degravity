@@ -31,7 +31,7 @@ public class MonkeScript : MonoBehaviour
     void Start()
     {
         _ms = GameObject.FindObjectOfType<ManagerScript>();
-        if(_ms != null)
+        if(_ms == null)
         {
             _mts = GameObject.FindObjectOfType<MonkeyTutorialScript>();
         }

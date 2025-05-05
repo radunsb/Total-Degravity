@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MonkeyTutorial.unity
     guid: 855d342d3f72deb47a1eec708d780c64
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 376bdd50c7c34ec4186b6dd04b11b278, type: 2}
