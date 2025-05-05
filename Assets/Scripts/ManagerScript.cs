@@ -63,7 +63,7 @@ public class ManagerScript : MonoBehaviour
         }
 
         //Uncomment the line below for single player testing
-        onSecondPlayerJoin();
+        //onSecondPlayerJoin();
     }
 
     public void onSecondPlayerJoin()
@@ -88,9 +88,12 @@ public class ManagerScript : MonoBehaviour
         }
         else
         {
-            pauseMenu.SetActive(true);
-            paused = true;
-            Time.timeScale = 0;
+            if (_winManager._gameStarted == true)
+            {
+                pauseMenu.SetActive(true);
+                paused = true;
+                Time.timeScale = 0;
+            }
         }
     }
 }
