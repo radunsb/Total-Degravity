@@ -192,7 +192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Help
+  m_Text: Tutorials
 --- !u!222 &9216014
 CanvasRenderer:
   m_ObjectHideFlags: 0

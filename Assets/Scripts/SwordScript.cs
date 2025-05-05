@@ -50,6 +50,10 @@ public class SwordScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _basicStrike;
     public AudioClip _scream;
+    public AudioClip _fireWoosh;
+
+    public ParticleSystem chargeParticles;
+    bool wooshing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +82,12 @@ public class SwordScript : MonoBehaviour
                 _swingTime = 0;
 
                 charge();
-
+                if (_chargeTime >= maxChargeTime * .5f && !wooshing)
+                {
+                    wooshing = true;
+                    chargeParticles.gameObject.SetActive(true);
+                    _as.PlayOneShot(_fireWoosh);
+                }
                 if (_chargeTime >= maxChargeTime)
                 {
                     _chargeTime = maxChargeTime;
@@ -91,7 +100,7 @@ public class SwordScript : MonoBehaviour
             else if (_swingTime >= maxSwingTime)
             {
                 _swingTime = 0;
-                _chargeTime = 0;
+                _chargeTime = 0;                
             }
             //if we aren't charging, but we have a charge built up
             //swing the sword
@@ -150,12 +159,14 @@ public class SwordScript : MonoBehaviour
     }
 
     void recover()
-    {
+    {        
         destination = restTransform;
         _swordSpeed = recoverSpeed;
         swordCollider.enabled = false;
         backFender.enabled = false;
         frontFender.enabled = false;
+        chargeParticles.gameObject.SetActive(false);
+        wooshing = false;
     }
 
     //we call swing every frame while we're swinging
@@ -196,6 +207,10 @@ public class SwordScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Player") || _swingTime == 0)
+        {
+            return;
+        }
         //Debug.Log("Trigger entered");
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
@@ -219,7 +234,7 @@ public class SwordScript : MonoBehaviour
         }
         else if(other.CompareTag("Wall"))
         {
-            if (_as)
+            if (_as && _swingTime != 0)
             {
                 _as.PlayOneShot(_basicStrike);
             }
@@ -235,7 +250,7 @@ public class SwordScript : MonoBehaviour
             _chargeTime = 0;
             _swingTime = 0;
         }
-        else if(otherRB == null && other.gameObject.tag == "Wall")
+        else if(otherRB == null && (other.gameObject.tag == "Wall" || other.gameObject.tag == "Reactor" || other.gameObject.tag == "Shield"))
         {
             _rb.velocity = Vector3.zero;
             _rb.AddForce(-1 * launchForce);

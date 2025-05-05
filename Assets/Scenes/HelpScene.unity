@@ -2314,6 +2314,7 @@ MonoBehaviour:
   _as: {fileID: 295828858}
   _buttonChange: {fileID: 8300000, guid: 79ac586cac6cc95488e418a798753674, type: 3}
   _buttonConfirm: {fileID: 8300000, guid: 69f9a14817e965b43bab0c1e9238bcbf, type: 3}
+  _musicSource: {fileID: 0}
 --- !u!4 &576180545
 Transform:
   m_ObjectHideFlags: 0
@@ -4402,9 +4403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Monkey Training
-
-    (In full release)'
+  m_Text: Monkey Training
 --- !u!222 &1373612048
 CanvasRenderer:
   m_ObjectHideFlags: 0
