@@ -345,6 +345,7 @@ MonoBehaviour:
   _netProjectileSpawnPoint: {fileID: 1069663117568465805}
   shootCooldown: 5
   velocityInfluence: 0.4
+  _pew: {fileID: 8300000, guid: b343038afb83a994ea98c5c9853e3cc8, type: 3}
 --- !u!114 &6734148915475482442
 MonoBehaviour:
   m_ObjectHideFlags: 0

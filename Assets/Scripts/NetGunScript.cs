@@ -17,9 +17,13 @@ public class NetGunScript : MonoBehaviour
 
     Slider netProgressBar;
 
+    public AudioClip _pew;
+    AudioSource _sfxSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        _sfxSource = GameObject.FindGameObjectWithTag("SFXsource").GetComponent<AudioSource>();
         _netProjectilePool = new ObjectPool(_netProjectilePrefab, true, 5);
         _humanRigidbody = GetComponent<Rigidbody>();
         shootTime = 3f;
@@ -46,7 +50,7 @@ public class NetGunScript : MonoBehaviour
             GameObject net = _netProjectilePool.GetObject();
             net.transform.position = _netProjectileSpawnPoint.position;
             net.GetComponent<Rigidbody>().velocity = (transform.forward * 90) + (humanVelocity * velocityInfluence);
-
+            _sfxSource.PlayOneShot(_pew);
             shootTime = 0f;
         }
     }
