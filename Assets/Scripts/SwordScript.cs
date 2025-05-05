@@ -207,6 +207,10 @@ public class SwordScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Player") || _swingTime == 0)
+        {
+            return;
+        }
         //Debug.Log("Trigger entered");
 
         Rigidbody otherRB = other.gameObject.GetComponent<Rigidbody>();
@@ -230,7 +234,7 @@ public class SwordScript : MonoBehaviour
         }
         else if(other.CompareTag("Wall"))
         {
-            if (_as)
+            if (_as && _swingTime != 0)
             {
                 _as.PlayOneShot(_basicStrike);
             }
@@ -246,7 +250,7 @@ public class SwordScript : MonoBehaviour
             _chargeTime = 0;
             _swingTime = 0;
         }
-        else if(otherRB == null && other.gameObject.tag == "Wall")
+        else if(otherRB == null && (other.gameObject.tag == "Wall" || other.gameObject.tag == "Reactor" || other.gameObject.tag == "Shield"))
         {
             _rb.velocity = Vector3.zero;
             _rb.AddForce(-1 * launchForce);
