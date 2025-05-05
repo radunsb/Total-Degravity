@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fbc36fa745369b04699df32c9778f9d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbc36fa745369b04699df32c9778f9d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbc36fa745369b04699df32c9778f9d2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbc36fa745369b04699df32c9778f9d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,7 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa1ca88fbc596249ab34909cbb771f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalHoldDistance: {x: 0, y: 0, z: 0}
+  additionalHoldDistance: {x: 0, y: 0, z: -6}
+  holdRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &5179035547919239716
 MonoBehaviour:
   m_ObjectHideFlags: 0

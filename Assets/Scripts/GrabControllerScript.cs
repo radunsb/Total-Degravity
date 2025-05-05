@@ -91,7 +91,10 @@ public class ObjectGrabScript : MonoBehaviour
 
             if (!grabbedObject.CompareTag("Player"))
             {
-                heldObject.transform.position += grabbedObject.GetComponent<GrabbableObjectScript>().additionalHoldDistance;
+                GrabbableObjectScript go = grabbedObject.GetComponent<GrabbableObjectScript>();
+
+                heldObject.transform.localRotation = Quaternion.Euler(go.holdRotation.x, go.holdRotation.y, go.holdRotation.z);
+                heldObject.transform.localPosition = go.additionalHoldDistance;
             }
         }
     }

@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa1ca88fbc596249ab34909cbb771f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalHoldDistance: {x: 0, y: 0, z: 0}
+  additionalHoldDistance: {x: 0, y: 5, z: 2}
+  holdRotation: {x: 0, y: 0, z: 180}
 --- !u!114 &5498403494250020855
 MonoBehaviour:
   m_ObjectHideFlags: 0

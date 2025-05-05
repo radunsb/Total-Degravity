@@ -20,6 +20,7 @@ public class ShieldScript : MonoBehaviour
     public AudioSource _as;
     public AudioClip _damage;
     public AudioClip _break;
+    public GameObject _explosion;
 
     private void Start()
     {
@@ -61,6 +62,7 @@ public class ShieldScript : MonoBehaviour
         {
             reactorCollider.enabled = true;
             _as.PlayOneShot(_break);
+            _explosion.gameObject.GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
         }
         else

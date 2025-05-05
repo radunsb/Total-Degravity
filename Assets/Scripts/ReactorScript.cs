@@ -20,6 +20,7 @@ public class ReactorScript : MonoBehaviour
     public AudioClip _damage;
 
     public AudioClip _destroy;
+    public GameObject _explosion;
 
     private void Start()
     {
@@ -53,6 +54,7 @@ public class ReactorScript : MonoBehaviour
 
         if(_health <= 0) {
             _as.PlayOneShot(_destroy);
+            _explosion.gameObject.GetComponent<ParticleSystem>().Play();
             StartCoroutine(MonkeyWin());
         }
         else
