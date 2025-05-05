@@ -38,6 +38,10 @@ public class NetScript : MonoBehaviour
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.SetActive(false);
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindObjectOfType<MonkeScript>().getNetted();
+        }
     }
 
     IEnumerator Deactivate()

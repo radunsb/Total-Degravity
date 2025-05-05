@@ -122,20 +122,17 @@ public class MonkeScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void getNetted()
     {
-        if (other.CompareTag("NetProjectile"))
-        {
-            _isNetted = true;
-            _swordScript.getNetted();
+        _isNetted = true;
+        _swordScript.getNetted();
 
-            _netImage.SetActive(true);
-            _netText.SetActive(true);
+        _netImage.SetActive(true);
+        _netText.SetActive(true);
 
-            _sword.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        _sword.gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            _nettedTime = 3f;
-        }
+        _nettedTime = 3f;
     }
 
     void launchNewBanana()
