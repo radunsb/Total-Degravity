@@ -17,22 +17,22 @@ public class HumanTutorialScript : MonoBehaviour
     public GameObject _player;
     public GameObject _thingLauncher;
     ThingLauncherScript _tls;
-    AudioSource _musicSource;
-    AudioSource _SFXSource;
+    public AudioSource _musicSource;
+    public AudioSource _SFXSource;
+    public AudioSource _jetpackSource;
     bool paused = false;
     public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
-        _musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
         if (PlayerPrefs.HasKey("musicVol"))
         {
             _musicSource.volume = PlayerPrefs.GetFloat("musicVol") / 5f;
         }
-        _SFXSource = GameObject.FindGameObjectWithTag("SFXsource").GetComponent<AudioSource>();
         if (PlayerPrefs.HasKey("SFXVol"))
         {
             _SFXSource.volume = PlayerPrefs.GetFloat("SFXVol") / 5f;
+            _jetpackSource.volume = PlayerPrefs.GetFloat("SFXVol") / 5f * 1.4f;
         }
         _tls = _thingLauncher.GetComponent<ThingLauncherScript>();
     }

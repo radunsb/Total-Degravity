@@ -15,6 +15,7 @@ public class ManagerScript : MonoBehaviour
     float _musicVol;
     float _sfxVol;
     public AudioSource _sfxSource;
+    public AudioSource _jetpackSource;
     public AudioSource _musicSource;
     bool paused = false;
     public GameObject pauseMenu;
@@ -40,6 +41,7 @@ public class ManagerScript : MonoBehaviour
         }
         _musicSource.volume = _musicVol;
         _sfxSource.volume = _sfxVol;
+        _jetpackSource.volume = _sfxVol * 1.4f; ;
     }
 
 

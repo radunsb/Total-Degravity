@@ -26,6 +26,7 @@ TagManager:
   - MusicSource
   - PauseMenu
   - SwordParticles
+  - JetpackSource
   layers:
   - Default
   - TransparentFX

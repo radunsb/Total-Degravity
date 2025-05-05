@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,10 +20,14 @@ public class JetpackScript : MonoBehaviour
     float curVelo;
     ManagerScript _ms;
     HumanTutorialScript _hts;
+    AudioSource _sfxSource;
+    public AudioClip _jetpackSound;
+    bool canStartSFX = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        _sfxSource = GameObject.FindGameObjectWithTag("JetpackSource").GetComponent<AudioSource>();
         _ms = GameObject.FindObjectOfType<ManagerScript>();
         if(_ms == null)
         {
@@ -89,11 +94,26 @@ public class JetpackScript : MonoBehaviour
         if (_thrusting || _backwardsThrusting || _horizontalThrusting.x != 0 || _horizontalThrusting.y != 0)
         {
             if (!particlesPlaying) TurnOnParticles();
+            if (canStartSFX)
+            {
+                _sfxSource.PlayOneShot(_jetpackSound);
+                canStartSFX = false;
+                StartCoroutine(enableSFX());
+            }
         }
         else
         {
             if (particlesPlaying) TurnOffParticles();
+            _sfxSource.Stop();
+            StopCoroutine(enableSFX());
+            canStartSFX = true;
         }
+    }
+
+    IEnumerator enableSFX()
+    {
+        yield return new WaitForSeconds(.75f);
+        canStartSFX = true;
     }
 
     void TurnOnParticles()

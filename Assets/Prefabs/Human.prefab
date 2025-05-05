@@ -219,6 +219,7 @@ MonoBehaviour:
   - {fileID: 400978666870445881}
   - {fileID: 4830609097367591418}
   thrustForce: 5
+  _jetpackSound: {fileID: 8300000, guid: a29b90d2263108540a9fb4e06f4c8434, type: 3}
 --- !u!114 &3860037491438364724
 MonoBehaviour:
   m_ObjectHideFlags: 0
