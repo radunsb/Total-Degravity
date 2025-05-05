@@ -68,7 +68,7 @@ public class ObjectiveArrowScript : MonoBehaviour
         if(screenID == 1)
         {
             objectivePosition = new Vector3(objectivePosition.x - screenWidth, objectivePosition.y, objectivePosition.z);
-            print(objectivePosition);
+            //print(objectivePosition);
         }
         bool offRight = objectivePosition.x > screenWidth;
         bool offLeft = objectivePosition.x < 0;

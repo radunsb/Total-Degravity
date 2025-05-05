@@ -18,6 +18,8 @@ public class JetpackScript : MonoBehaviour
     float adaptiveThrustMultiplier = 1f;
     float[] velocityThresholds = { 2f, 5f, 10f };
     float curVelo;
+    float coastFactor = 0.99f;
+
     ManagerScript _ms;
     HumanTutorialScript _hts;
     AudioSource _sfxSource;
@@ -107,6 +109,8 @@ public class JetpackScript : MonoBehaviour
             _sfxSource.Stop();
             StopCoroutine(enableSFX());
             canStartSFX = true;
+
+            _rbody.velocity = new Vector3(_rbody.velocity.x * coastFactor, _rbody.velocity.y * coastFactor, _rbody.velocity.z * coastFactor);
         }
     }
 
